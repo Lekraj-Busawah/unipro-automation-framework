@@ -1,3 +1,5 @@
+[![Automation Suite](https://github.com/Lekraj-Busawah/unipro-automation-framework/actions/workflows/main.yml/badge.svg)](https://lekraj-busawah.github.io/unipro-automation-framework/)
+
 # Unipro BDD Automation Framework
 
 A scalable automated testing framework built with **Python**, **Behave (BDD)**, and **Selenium**.
