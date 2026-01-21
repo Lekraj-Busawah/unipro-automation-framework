@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+*.venv
+venv/
+
+# Test Reports & Media
+reports/
+allure-results/
+allure-report/
+screenshots/
+*.log
+
+# IDE Settings
+.vscode/
+.idea/
+
+# OS generated
+.DS_Store
+Thumbs.db
