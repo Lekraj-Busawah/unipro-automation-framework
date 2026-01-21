@@ -1,4 +1,4 @@
-[![Automation Suite](https://github.com/Lekraj-Busawah/unipro-automation-framework/actions/workflows/main.yml/badge.svg)](https://lekraj-busawah.github.io/unipro-automation-framework/)
+[![Unipro Automation Suite](https://github.com/Lekraj-Busawah/unipro-automation-framework/actions/workflows/automation.yml/badge.svg)](https://github.com/Lekraj-Busawah/unipro-automation-framework/actions/workflows/automation.yml)
 
 # Unipro BDD Automation Framework
 
