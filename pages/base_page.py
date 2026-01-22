@@ -21,6 +21,11 @@ class BasePage:
         except TimeoutException:
             raise AssertionError(f"Element with locator {locator} was not visible after {timeout} seconds")
 
+    def scroll_to_element(self, locator):
+        element = self.wait_for_visibility(locator)
+        self.driver.execute_script("arguments[0].scrollIntoView(true);", element)
+        
+
     def wait_for_clickable(self, locator):
         return self.wait.until(EC.element_to_be_clickable(locator))
 
@@ -56,3 +61,12 @@ class BasePage:
             print("Cookie banner accepted.")
         except:
             print("No cookie banner found.")
+    
+    def wait_for_url_to_be(self, url):
+        """Waits until the URL is exactly this string"""
+        return self.wait.until(EC.url_to_be(url))
+
+    def wait_for_url_to_contain(self, text):
+        """Waits until the URL contains this specific text"""
+        return self.wait.until(EC.url_contains(text))
+    
