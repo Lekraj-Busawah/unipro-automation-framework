@@ -31,7 +31,6 @@ Feature: Website Footer Content and Navigation
     Then the footer displays the London office section
     And the footer displays the Havant office section
 
-  
   Scenario Outline: Footer displays complete office details
     Then the "<office>" address displays "<street>", "<city>", "<postcode>" and "<telephone>"
 
@@ -40,29 +39,21 @@ Feature: Website Footer Content and Navigation
       | Havant | Langstone Gate Solent Road    | Havant | PO9 1TR  | +44 (0) 1243 539412 |
       | London | 167-169 Great Portland Street | London | W1W 5PF  | +44 (0) 2034 439203 |
 
-  @wip
-  Scenario: Social media links open in a new browser tab
-    Then the LinkedIn link is visible in the footer
-    And the LinkedIn link opens in a new browser tab
-    And the YouTube link is visible in the footer
-    And the YouTube link opens in a new browser tab
+  Scenario Outline: Social media links open in a new browser tab
+    Then the "<social>" link is visible in the footer
+    And the "<social>" link opens in a new browser tab
+
+    Examples:
+      | social   |
+      | LinkedIn |
+      | YouTube  |
 
   Scenario Outline: Footer policy links navigate to the correct destinations
-    When the user selects the "<policy>" link in the footer
-    Then the user is navigated to the external policy page
-    And the destination page responds successfully
+    When the user clicks the "<policy>" link in the footer
+    Then the user is navigated to the "<policy>" page
 
     Examples:
       | policy          |
       | Privacy Policy  |
       | Cookie Policy   |
       | Security Policy |
-
-  Scenario Outline: Footer layout adapts to responsive breakpoints
-    Given I set the viewport width to "<viewportWidth>"
-    Then the footer layout should adjust to the "<expectedLayout>" layout
-
-    Examples:
-      | viewportWidth | expectedLayout |
-      |           320 | mobile         |
-      |           768 | tablet         |

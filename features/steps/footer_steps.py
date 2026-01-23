@@ -78,46 +78,28 @@ def step_impl(context, office, street, city, postcode, phone):
     assert phone in flat_address, f"Expected phone '{phone}' not found"
     
 
-@then(u'the LinkedIn link is visible in the footer')
-def step_impl(context):
-    pass
+@then(u'the "{social}" link is visible in the footer')
+def step_impl(context, social):
+    assert context.footer.get_social_link(social), f"{social} link not found"
 
 
-@then(u'the LinkedIn link opens in a new browser tab')
-def step_impl(context):
-    pass
+@then(u'the "{social}" link opens in a new browser tab')
+def step_impl(context, social):
+    context.footer.click_social_link(social)
+    
+    actual_title = context.footer.check_title_in_new_tab()
+    
+    assert social in actual_title, f"Expected title '{social}' not found in '{actual_title}'"
 
 
-@then(u'the YouTube link is visible in the footer')
-def step_impl(context):
-    pass
+@when(u'the user clicks the "{policy}" link in the footer')
+def step_impl(context, policy):
+    context.footer.click_policy_link(policy)
 
 
-@then(u'the YouTube link opens in a new browser tab')
-def step_impl(context):
-    pass
+@then(u'the user is navigated to the "{policy}" page')
+def step_impl(context, policy):
+    title = context.footer.get_title(expected_text=policy)
+    print(title)
 
-
-@when(u'the user selects the "{policy}" link in the footer')
-def step_impl(context):
-    pass
-
-
-@then(u'the user is navigated to the external policy page')
-def step_impl(context):
-    pass
-
-
-@then(u'the destination page responds successfully')
-def step_impl(context):
-    pass
-
-
-@then(u'the footer layout should adjust to the "mobile" layout')
-def step_impl(context):
-    pass
-
-
-@then(u'the footer layout should adjust to the "tablet" layout')
-def step_impl(context):
-    pass
+    assert policy in title, f"Expected '{policy}' in title but found in '{title}'"

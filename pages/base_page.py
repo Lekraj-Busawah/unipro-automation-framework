@@ -43,7 +43,16 @@ class BasePage:
         element.clear()
         element.send_keys(text)
     
-    def get_title(self):
+    def get_title(self, expected_text=None):
+        """
+        If expected_text is provided, it waits for that text to appear in the title.
+        Otherwise, it just waits for any title to exist.
+        """
+        if expected_text:
+            self.wait.until(EC.title_contains(expected_text))
+        else:
+            self.wait.until(lambda driver: len(driver.title) > 0)
+            
         return self.driver.title
     
     def set_viewport_size(self, width, height):
@@ -70,3 +79,9 @@ class BasePage:
         """Waits until the URL contains this specific text"""
         return self.wait.until(EC.url_contains(text))
     
+    
+    def get_windows_id(self, window):
+        if window == 'original_window':
+            return self.driver.current_window_handle
+        if window == 'existing_windows':
+            return self.driver.window_handles
