@@ -21,6 +21,11 @@ class BasePage:
         except TimeoutException:
             raise AssertionError(f"Element with locator {locator} was not visible after {timeout} seconds")
 
+    def scroll_to_element(self, locator):
+        element = self.wait_for_visibility(locator)
+        self.driver.execute_script("arguments[0].scrollIntoView(true);", element)
+        
+
     def wait_for_clickable(self, locator):
         return self.wait.until(EC.element_to_be_clickable(locator))
 
@@ -38,7 +43,16 @@ class BasePage:
         element.clear()
         element.send_keys(text)
     
-    def get_title(self):
+    def get_title(self, expected_text=None):
+        """
+        If expected_text is provided, it waits for that text to appear in the title.
+        Otherwise, it just waits for any title to exist.
+        """
+        if expected_text:
+            self.wait.until(EC.title_contains(expected_text))
+        else:
+            self.wait.until(lambda driver: len(driver.title) > 0)
+            
         return self.driver.title
     
     def set_viewport_size(self, width, height):
@@ -56,3 +70,18 @@ class BasePage:
             print("Cookie banner accepted.")
         except:
             print("No cookie banner found.")
+    
+    def wait_for_url_to_be(self, url):
+        """Waits until the URL is exactly this string"""
+        return self.wait.until(EC.url_to_be(url))
+
+    def wait_for_url_to_contain(self, text):
+        """Waits until the URL contains this specific text"""
+        return self.wait.until(EC.url_contains(text))
+    
+    
+    def get_windows_id(self, window):
+        if window == 'original_window':
+            return self.driver.current_window_handle
+        if window == 'existing_windows':
+            return self.driver.window_handles
