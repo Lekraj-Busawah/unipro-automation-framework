@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [ "main", "master" ]
 
+  schedule:
+    # Runs at 7:15 AM Mauritius Time, Mon-Fri
+    - cron: '15 3 * * 1-5'
+
 permissions:
   contents: write
   pages: write
