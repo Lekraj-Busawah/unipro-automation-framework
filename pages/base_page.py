@@ -2,6 +2,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.by import By
+from utilities.read_properties import ReadConfig
 
 
 class BasePage:
@@ -14,6 +15,18 @@ class BasePage:
         self.driver = driver
         # Standard explicit wait time
         self.wait = WebDriverWait(self.driver, 10)
+
+    base_url = ReadConfig.get_application_url()
+        
+    def navigate_to_base_url(self):
+        """Navigate to the base URL and perform initial site setup (e.g., cookies)."""
+        self.driver.get(self.base_url)
+        
+        self.wait.until(
+            lambda driver: driver.execute_script("return document.readyState") == "complete"
+        )
+
+        self.handle_cookie_consent()
 
     def wait_for_visibility(self, locator):
         try:
@@ -30,8 +43,8 @@ class BasePage:
         return self.wait.until(EC.element_to_be_clickable(locator))
 
     def find_element(self, locator):
-        """Wait for element to be visible and return it."""
-        return self.wait.until(EC.visibility_of_element_located(locator))
+        """Checks for presence of element in the HTML"""
+        return self.wait.until(EC.presence_of_element_located(locator))
     
     def click_element(self, locator):
         """Wait for element to be visible and click it."""
@@ -55,7 +68,7 @@ class BasePage:
             
         return self.driver.title
     
-    def set_viewport_size(self, width, height):
+    def set_viewport_size(self, width, height=1080):
         """Resizes the window"""
         self.driver.set_window_size(width, height)
 
@@ -64,11 +77,11 @@ class BasePage:
         try:
             accept_btn_locator = (By.XPATH, "//button[contains(@class, 'iubenda-cs-accept-btn')]") 
             
-            wait_short = WebDriverWait(self.driver, 3)
-            btn = wait_short.until(EC.element_to_be_clickable(accept_btn_locator))
+            self.wait_short = WebDriverWait(self.driver, 3)
+            btn = self.wait_short.until(EC.element_to_be_clickable(accept_btn_locator))
             btn.click()
             print("Cookie banner accepted.")
-        except:
+        except TimeoutException:
             print("No cookie banner found.")
     
     def wait_for_url_to_be(self, url):
