@@ -1,6 +1,10 @@
 from behave import *
 from pages.homepage import Homepage
 
+# ---------------------------------------------------------------------------
+# HERO SECTION
+# ---------------------------------------------------------------------------
+
 @given(u'the user navigates to the Home page')
 def step_impl(context):
     context.homepage = Homepage(context.driver)
@@ -9,7 +13,7 @@ def step_impl(context):
 
 @then(u'the "{element_name}" container should exist')
 def step_impl(context, element_name):
-    is_visible = context.homepage.is_container_visible(element_name)
+    is_visible = context.homepage.is_visible(element_name)
     assert is_visible, f"The {element_name} container was not visible on the page."
 
 
@@ -38,3 +42,52 @@ def step_impl(context, image_name, expected_status):
     is_visible = context.homepage.is_image_visible(image_name)
     
     assert is_visible == should_be_visible, f"Error: {image_name} was expected to be {expected_status}."
+
+# ---------------------------------------------------------------------------
+# "WHY" CONTENT BLOCK (The problem & the Guide)
+# ---------------------------------------------------------------------------
+
+@when(u'the {block_name} container is displayed')
+def step_impl(context, block_name):
+    is_visible = context.homepage.is_visible(block_name)
+    assert is_visible is True, f"The {block_name} container was not visible on the page!"
+
+@then(u'the {block_name} eyebrow text is visible and contains "{eyebrow_contains}"')
+def step_impl(context):
+    pass
+
+
+@then(u'the {block_name} heading is visible and contains "{heading_contains}"')
+def step_impl(context):
+    pass
+
+
+@then(u'the {block_name} intro text block is visible and contains "{intro_contains}"')
+def step_impl(context):
+    pass
+
+
+@then(u'the {block_name} call to action is visible and its text contains "{cta_text_contains}"')
+def step_impl(context):
+    pass
+
+
+@then(u'the {block_name} call to action navigates to "{cta_target_url}"')
+def step_impl(context):
+    pass
+
+
+@when(u'the homepage is viewed on a {device_type} device')
+def step_impl(context):
+    pass
+
+
+@then(u'the {block_name} desktop image visibility is {desktop_image_visibility}')
+def step_impl(context):
+    pass
+
+
+@then(u'the {block_name} mobile image visibility is {mobile_image_visibility}')
+def step_impl(context):
+    pass
+
