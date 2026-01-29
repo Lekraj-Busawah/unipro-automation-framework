@@ -92,9 +92,15 @@ class BasePage:
         """Waits until the URL contains this specific text"""
         return self.wait.until(EC.url_contains(text))
     
-    
     def get_windows_id(self, window):
         if window == 'original_window':
             return self.driver.current_window_handle
         if window == 'existing_windows':
             return self.driver.window_handles
+        
+    def is_visible(self, element_name):
+        locator = self.locators.get(element_name)
+        if not locator:
+            raise ValueError(f"No locator named '{element_name}' found on {self.__class__.__name__}")
+        
+        return self.find_element(locator).is_displayed()
