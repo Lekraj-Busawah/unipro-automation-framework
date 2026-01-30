@@ -33,20 +33,6 @@ class Homepage(BasePage):
     # ---------------------------------------------------------------------------
     # ACTIONS
     # ---------------------------------------------------------------------------
-    
-    def get_hero_heading_text(self):
-        locator = self.locators.get("heading")
-        return self.find_element(locator).text.strip()
-    
-    def get_paragraph_text(self, paragraph_index):
-        locator = self.locators.get(int(paragraph_index))
-        return self.find_element(locator).text.strip()
-    
+
     def get_desktop_hero_image(self, visible_image):
-        locator = self.locators.get(visible_image)
-        return self.find_element(locator)
-
-    def is_image_visible(self, image_name):
-        locator = self.locators.get(image_name)
-
-        return self.find_element(locator).is_displayed()
+        return self.get_element(visible_image)
