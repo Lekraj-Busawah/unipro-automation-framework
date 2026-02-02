@@ -3,6 +3,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.by import By
 from utilities.read_properties import ReadConfig
+import requests
 
 
 class BasePage:
@@ -84,6 +85,10 @@ class BasePage:
             
         return self.driver.title
     
+    def get_url(self):
+        """Returns the current URL of the browser."""
+        return self.driver.current_url
+    
     def set_viewport_size(self, width, height=1080):
         """Resizes the window"""
         self.driver.set_window_size(width, height)
@@ -117,6 +122,14 @@ class BasePage:
             return self.driver.current_window_handle
         if window == 'existing_windows':
             return self.driver.window_handles
+        
+    def get_http_status(self, url):
+        """Returns the status code."""
+        try:
+            response = requests.get(url, timeout=5)
+            return response.status_code
+        except requests.exceptions.RequestException:
+            return None
         
     # ---------------------------------------------------------------------------
     # GENERIC LOCATOR METHODS
