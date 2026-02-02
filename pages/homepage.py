@@ -24,10 +24,10 @@ class Homepage(BasePage):
         "mobile hero image": (By.XPATH, "//img[@class='hero-block__image hide-desktop']"),
 
         # Why Section Details
-        "why eyebrow": (By.CSS_SELECTOR, "div[class='content-block__typography'] p[class='eyebrow']"),
-        "why heading": (By.CSS_SELECTOR, "div[class='content-block__typography'] h2"),
-        "why intro text": (By.CSS_SELECTOR, "div[class='content-block__typography'] div[class='intro-feature-text']"),
-        "why cta": (By.XPATH, "//a[@class='link']"),
+        "eyebrow text": (By.CSS_SELECTOR, "div[class='content-block__typography'] p[class='eyebrow']"),
+        "heading": (By.CSS_SELECTOR, "div[class='content-block__typography'] h2"),
+        "intro text block": (By.CSS_SELECTOR, "div[class='content-block__typography'] div[class='intro-feature-text']"),
+        "call to action": (By.XPATH, "//a[@class='link']"),
     }
 
     # ---------------------------------------------------------------------------
