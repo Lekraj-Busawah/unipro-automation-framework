@@ -32,23 +32,23 @@ Feature: Homepage marketing content and layout
 
   @responsive @desktop
   Scenario Outline: Verify hero image visibility on Desktop
-    Given I set the homepage viewport width to <viewportWidth>
+    When the homepage is viewed on a <device_type> device
     Then the "<visible_image>" visibility should be visible
     And the "<hidden_image>" visibility should be hidden
 
     Examples:
-      | viewportWidth | visible_image      | hidden_image      |
-      | 1920          | desktop hero image | mobile hero image |
+      | device_type | visible_image      | hidden_image      |
+      | desktop     | desktop hero image | mobile hero image |
 
   @responsive @mobile
   Scenario Outline: Verify hero image visibility on Mobile
-    Given I set the homepage viewport width to <viewportWidth>
+    When the homepage is viewed on a <device_type> device
     Then the "<visible_image>" visibility should be visible
     And the "<hidden_image>" visibility should be hidden
 
     Examples:
-      | viewportWidth | visible_image     | hidden_image       |
-      | 375           | mobile hero image | desktop hero image |
+      | device_type | visible_image     | hidden_image       |
+      | mobile      | mobile hero image | desktop hero image |
 
   # ---------------------------------------------------------------------------
   # "WHY" CONTENT BLOCK (The problem & the Guide)
@@ -66,7 +66,7 @@ Feature: Homepage marketing content and layout
       | intro text block | bespoke agentic         |
       | call to action   | keeping you up at night |
 
-  @homepage @why-section @navigation @wip
+  @homepage @why-section @navigation
   Scenario: Verify "why" section CTA redirect
     Then the call to action navigates to "https://www.unipro.io/contact-us/"
 
@@ -74,12 +74,10 @@ Feature: Homepage marketing content and layout
   @homepage @why-section @reponsive
   Scenario Outline: Responsive imagery for "why" content block
     When the homepage is viewed on a <device_type> device
-    Then the "why" desktop image visibility is <desktop_image_visibility>
-    And the "why" mobile image visibility is <mobile_image_visibility>
+    # Then the <block_name> desktop image visibility is <desktop_image_visibility>
+    And the <block_name> mobile image visibility is <mobile_image_visibility>
 
     Examples:
-      | device_type | desktop_image_visibility | mobile_image_visibility |
-      | desktop     | visible                  | hidden                  |
-      | mobile      | hidden                   | visible                 |
-      | tablet      | visible                  | hidden                  |
-
+      | device_type | block_name | desktop_image_visibility | mobile_image_visibility |
+      | desktop     | why        | visible                  | hidden                  |
+      | mobile      | why        | hidden                   | visible                 |
