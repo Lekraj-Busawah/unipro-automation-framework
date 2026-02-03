@@ -1,6 +1,6 @@
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException
+from selenium.common.exceptions import TimeoutException, NoSuchElementException
 from selenium.webdriver.common.by import By
 from utilities.read_properties import ReadConfig
 import requests
@@ -89,9 +89,26 @@ class BasePage:
         """Returns the current URL of the browser."""
         return self.driver.current_url
     
-    def set_viewport_size(self, width, height=1080):
-        """Resizes the window"""
-        self.driver.set_window_size(width, height)
+    def set_viewport_size(self, device_type="desktop"):
+        """
+        Sets the browser window size based on the device category.
+        Options: 'mobile', 'tablet', 'desktop'
+        """
+        device_map = {
+            "mobile": (375, 812),   
+            "tablet": (768, 1024),  
+            "desktop": (1920, 1080) 
+        }
+
+        device = device_type.lower()
+        
+        if device in device_map:
+            width, height = device_map[device]
+            self.driver.set_window_size(width, height)
+            print(f"Viewport set to {device}: {width}x{height}")
+        else:
+            raise ValueError(f"Device '{device_type}' not recognized. Use: mobile, tablet, or desktop.")
+
 
     def handle_cookie_consent(self):
         """
@@ -134,17 +151,6 @@ class BasePage:
     # ---------------------------------------------------------------------------
     # GENERIC LOCATOR METHODS
     # ---------------------------------------------------------------------------
-
-    def is_visible(self, element_name):
-        """
-        Look up a locator by name and check if it is displayed.
-        """
-        locator = self.locators.get(element_name)
-        if not locator:
-            raise ValueError(f"No locator named '{element_name}' found on {self.__class__.__name__}")
-        
-        # Returns True/False
-        return self.find_element(locator).is_displayed()
     
     def get_element_text(self, element_name):
         """
@@ -163,4 +169,21 @@ class BasePage:
         if not locator:
             raise ValueError(f"No locator named '{element_name}' found on {self.__class__.__name__}")
         
-        return self.find_element(locator)
+        return self.wait_for_visibility(locator)
+    
+    def is_element_displayed(self, element_name, timeout=2):
+        """
+        Check if an element is visible on the page using a locator key.
+        """
+        locator = self.locators.get(element_name)
+        
+        if not locator:
+            raise ValueError(f"No locator found for key: {element_name}")
+
+        try:
+            element = WebDriverWait(self.driver, timeout).until(
+                EC.visibility_of_element_located(locator)
+            )
+            return element.is_displayed()
+        except (TimeoutException, NoSuchElementException):
+            return False
