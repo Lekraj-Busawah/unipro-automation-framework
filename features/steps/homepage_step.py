@@ -93,7 +93,7 @@ def step_impl(context, block_name, expected_visibility):
         f"Responsive Error: {locator_key} should be {expected_visibility} on {context.current_device}"
 
 
-@when(u'the {block_name} mobile image visibility is {mobile_image_visibility}')
+@then(u'the {block_name} mobile image visibility is {mobile_image_visibility}')
 def step_impl(context, block_name, mobile_image_visibility):
     # Create the key: "why mobile image"
     locator_key = f"{block_name} mobile image"

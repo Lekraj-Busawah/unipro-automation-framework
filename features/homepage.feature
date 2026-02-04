@@ -71,10 +71,10 @@ Feature: Homepage marketing content and layout
     Then the call to action navigates to "https://www.unipro.io/contact-us/"
 
 
-  @homepage @why-section @reponsive
+  @homepage @why-section @reponsive @wip
   Scenario Outline: Responsive imagery for "why" content block
     When the homepage is viewed on a <device_type> device
-    # Then the <block_name> desktop image visibility is <desktop_image_visibility>
+    Then the <block_name> desktop image visibility is <desktop_image_visibility>
     And the <block_name> mobile image visibility is <mobile_image_visibility>
 
     Examples:
