@@ -71,7 +71,7 @@ Feature: Homepage marketing content and layout
     Then the call to action navigates to "https://www.unipro.io/contact-us/"
 
 
-  @homepage @why-section @reponsive @wip
+  @homepage @why-section @reponsive
   Scenario Outline: Responsive imagery for "why" content block
     When the homepage is viewed on a <device_type> device
     Then the <block_name> desktop image visibility is <desktop_image_visibility>
@@ -81,3 +81,29 @@ Feature: Homepage marketing content and layout
       | device_type | block_name | desktop_image_visibility | mobile_image_visibility |
       | desktop     | why        | visible                  | hidden                  |
       | mobile      | why        | hidden                   | visible                 |
+
+  # ---------------------------------------------------------------------------
+  # FEATURE BLOCK – "The Unipro advantage"
+  # ---------------------------------------------------------------------------
+
+  @homepage @feature-section
+  Scenario Outline: Display of feature block content and CTA
+    When the "feature" container is displayed
+    Then the <element_name> is visible and contains "<element_contains>"
+    # And the feature primary call-to-action button navigates to <button_target_url>
+
+    Examples:
+      | element_name             | element_contains     |
+      | feature eyebrow text     | ADVANTAGE            |
+      | feature heading          | Unrivalled Advantage |
+      | feature intro text block | Strategic Definition |
+      | feature call to action   | Contact Us           |
+
+  @homepage @feature-section
+  Scenario: Feature block imagery
+    When the "feature" container is displayed
+    Then the "feature image" is visible
+
+  @homepage @feature-section @navigation
+  Scenario: Verify "feature" section CTA redirect
+    Then the call to action navigates to "https://www.unipro.io/contact-us/"
