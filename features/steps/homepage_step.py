@@ -103,3 +103,12 @@ def step_impl(context, block_name, mobile_image_visibility):
     
     assert actual == mobile_image_visibility, \
         f"Responsive Error: {locator_key} should be {mobile_image_visibility} on {context.current_device}"
+    
+# ---------------------------------------------------------------------------
+# FEATURE BLOCK – "The Unipro advantage"
+# ---------------------------------------------------------------------------
+
+@then(u'the "{element_name}" is visible')
+def step_impl(context, element_name):
+    is_visible = context.homepage.is_element_displayed(element_name)
+    assert is_visible is True, f"The {element_name} container was not visible on the page!"
