@@ -61,10 +61,10 @@ Feature: Homepage marketing content and layout
 
     Examples:
       | element_name     | element_contains        |
-      | eyebrow text     | PROBLEM                 |
-      | heading          | strategic liability     |
-      | intro text block | bespoke agentic         |
-      | call to action   | keeping you up at night |
+      | why eyebrow text     | PROBLEM                 |
+      | why heading          | strategic liability     |
+      | why intro text block | bespoke agentic         |
+      | why call to action   | keeping you up at night |
 
   @homepage @why-section @navigation
   Scenario: Verify "why" section CTA redirect
