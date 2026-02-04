@@ -13,6 +13,8 @@ class Homepage(BasePage):
         "hero heading": (By.CSS_SELECTOR, "div[class='typography'] h1"),
         "intro feature text": (By.XPATH, "(//div[@class='intro-feature-text'])[1]"),
         "why": (By.CSS_SELECTOR, "#why"),
+        "feature": (By.CSS_SELECTOR, ".feature-block.block"),
+
 
         # Paragraphs
         1: (By.XPATH, "//p[contains(text(),'We are a custom software studio that replaces outd')]"),
@@ -30,6 +32,13 @@ class Homepage(BasePage):
         "call to action": (By.XPATH, "//a[@class='link']"),
         "why desktop image": (By.CSS_SELECTOR, ".content-block__image.hide-mobile"),
         "why mobile image": (By.CSS_SELECTOR, ".content-block__image.hide-desktop"),
+
+        # Feature block
+        "feature eyebrow text": (By.XPATH, "//p[normalize-space()='The Unipro advantage (pillars of value)']"),
+        "feature heading": (By.XPATH, "//h2[contains(text(),'Unrivalled Advantage')]"),
+        "feature intro text block": (By.XPATH, "(//div[@class='intro-feature-text'])[3]"),
+        "feature call to action": (By.CSS_SELECTOR, ".button.button--primary"),
+        "feature image": (By.CSS_SELECTOR, "div[class='feature-block__image'] img[decoding='async']"),
     }
 
     # ---------------------------------------------------------------------------
@@ -49,4 +58,3 @@ class Homepage(BasePage):
             return element.is_displayed()
         except:
             return False
-
