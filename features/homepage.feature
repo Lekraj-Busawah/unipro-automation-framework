@@ -60,7 +60,7 @@ Feature: Homepage marketing content and layout
     Then the <element_name> is visible and contains "<element_contains>"
 
     Examples:
-      | element_name     | element_contains        |
+      | element_name         | element_contains        |
       | why eyebrow text     | PROBLEM                 |
       | why heading          | strategic liability     |
       | why intro text block | bespoke agentic         |
@@ -107,3 +107,39 @@ Feature: Homepage marketing content and layout
   @homepage @feature-section @navigation
   Scenario: Verify "feature" section CTA redirect
     Then the call to action navigates to "https://www.unipro.io/contact-us/"
+
+  # ---------------------------------------------------------------------------
+  # IMAGE GRID – CLIENTS
+  # ---------------------------------------------------------------------------
+
+  Scenario Outline: Display of image grid heading content
+    When the "clients" container is displayed
+    Then the <element_name> is visible and contains "<element_contains>"
+
+    Examples:
+      | element_name             | element_contains          |
+      | clients eyebrow text     | TRUST                     |
+      | clients heading          | demanding sectors         |
+      | clients intro text block | custom software solutions |
+
+  @wip
+  Scenario Outline: Image grid client tiles basic content and accessibility
+    When the "clients" container is displayed
+    Then the image grid has at least <tile_count> client tiles
+    And the client tile at position <tile_position> has an associated image
+    And the client tile at position <tile_position> link presence is <link_presence>
+
+    Examples:
+      | tile_count | tile_position | link_presence |
+      | 12         | 1             | present       |
+      | 12         | 2             | present       |
+      | 12         | 3             | present       |
+      | 12         | 4             | present       |
+      | 12         | 5             | present       |
+      | 12         | 6             | present       |
+      | 12         | 7             | present       |
+      | 12         | 8             | absent        |
+      | 12         | 9             | absent        |
+      | 12         | 10            | absent        |
+      | 12         | 11            | absent        |
+      | 12         | 12            | absent        |
