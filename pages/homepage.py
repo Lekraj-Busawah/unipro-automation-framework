@@ -15,7 +15,6 @@ class Homepage(BasePage):
         "why": (By.CSS_SELECTOR, "#why"),
         "feature": (By.CSS_SELECTOR, ".feature-block.block"),
 
-
         # Paragraphs
         1: (By.XPATH, "//p[contains(text(),'We are a custom software studio that replaces outd')]"),
         2: (By.XPATH, "//p[contains(text(),'With bespoke systems and Agentic AI, we eliminate ')]"),
@@ -26,10 +25,10 @@ class Homepage(BasePage):
         "mobile hero image": (By.XPATH, "//img[@class='hero-block__image hide-desktop']"),
 
         # Why Section Details
-        "eyebrow text": (By.CSS_SELECTOR, "div[class='content-block__typography'] p[class='eyebrow']"),
-        "heading": (By.CSS_SELECTOR, "div[class='content-block__typography'] h2"),
-        "intro text block": (By.CSS_SELECTOR, "div[class='content-block__typography'] div[class='intro-feature-text']"),
-        "call to action": (By.XPATH, "//a[@class='link']"),
+        "why eyebrow text": (By.CSS_SELECTOR, "div[class='content-block__typography'] p[class='eyebrow']"),
+        "why heading": (By.CSS_SELECTOR, "div[class='content-block__typography'] h2"),
+        "why intro text block": (By.CSS_SELECTOR, "div[class='content-block__typography'] div[class='intro-feature-text']"),
+        "why call to action": (By.XPATH, "//a[@class='link']"),
         "why desktop image": (By.CSS_SELECTOR, ".content-block__image.hide-mobile"),
         "why mobile image": (By.CSS_SELECTOR, ".content-block__image.hide-desktop"),
 
