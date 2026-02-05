@@ -152,25 +152,34 @@ class BasePage:
     # GENERIC LOCATOR METHODS
     # ---------------------------------------------------------------------------
     
-    def get_element_text(self, element_name):
+    def get_element_text(self, locator):
         """
         Generic method to get stripped text from any element in self.locators
         """
-        locator = self.locators.get(element_name)
+        locator = self.locators.get(locator)
         if not locator:
-            raise ValueError(f"No locator named '{element_name}' found on {self.__class__.__name__}")
+            raise ValueError(f"No locator named '{locator}' found on {self.__class__.__name__}")
         
         element = self.wait_for_visibility(locator)
         return element.text.strip()
     
-    def get_element(self, element_name):
+    def get_element(self, locator):
         """Returns the raw WebElement"""
-        locator = self.locators.get(element_name)
+        locator = self.locators.get(locator)
         if not locator:
-            raise ValueError(f"No locator named '{element_name}' found on {self.__class__.__name__}")
+            raise ValueError(f"No locator named '{locator}' found on {self.__class__.__name__}")
         
         return self.wait_for_visibility(locator)
     
+    def get_elements(self, locator):
+        """Return all web elements matching the given locator."""
+        locator = self.locators.get(locator)
+        if locator is None:
+            raise KeyError(f"Locator '{locator}' not found in locators dictionary")
+        
+        by, selector = locator
+        return self.driver.find_elements(by, selector)
+
     def is_element_displayed(self, element_name, timeout=2):
         """
         Check if an element is visible on the page using a locator key.
