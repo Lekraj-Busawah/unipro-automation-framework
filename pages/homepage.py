@@ -14,6 +14,7 @@ class Homepage(BasePage):
         "intro feature text": (By.XPATH, "(//div[@class='intro-feature-text'])[1]"),
         "why": (By.CSS_SELECTOR, "#why"),
         "feature": (By.CSS_SELECTOR, ".feature-block.block"),
+        "clients": (By.CSS_SELECTOR, "#clients"),
 
         # Paragraphs
         1: (By.XPATH, "//p[contains(text(),'We are a custom software studio that replaces outd')]"),
@@ -38,22 +39,33 @@ class Homepage(BasePage):
         "feature intro text block": (By.XPATH, "(//div[@class='intro-feature-text'])[3]"),
         "feature call to action": (By.CSS_SELECTOR, ".button.button--primary"),
         "feature image": (By.CSS_SELECTOR, "div[class='feature-block__image'] img[decoding='async']"),
+
+        # Clients block
+        "clients eyebrow text": (By.CSS_SELECTOR, "div[class='left-column'] p[class='eyebrow']"),
+        "clients heading": (By.CSS_SELECTOR, "div[class='left-column'] h2"),
+        "clients intro text block": (By.CSS_SELECTOR, "div[class='left-column'] div[class='intro-feature-text']"),
+        "client tile": (By.CSS_SELECTOR, ".image-grid-block__grid-single"),
+
     }
 
     # ---------------------------------------------------------------------------
     # ACTIONS
     # ---------------------------------------------------------------------------
-
-    def get_desktop_hero_image(self, visible_image):
-        return self.get_element(visible_image)
+        
+    def get_number_tiles(self):
+        tiles = self.get_elements('client tile')
+        return len(tiles)
     
-    def is_image_visible(self):
-        """
-        Check if image is visible.
-        """
-        try:
-            element = self.wait_for_visibility(self.locators['why'])
-            breakpoint
-            return element.is_displayed()
-        except:
-            return False
+    def get_client_tiles(self):
+        return self.get_elements("client tile")
+
+    def get_tile_at_position(self, tile_position):
+        tiles = self.get_client_tiles()
+        return tiles[int(tile_position) - 1]
+    
+    def get_desktop_image_from_tile(self, tile):
+        return tile.find_element(By.CSS_SELECTOR, "img.hide-mobile")
+    
+    def tile_has_link(self, title):
+        links = title.find_elements(By.TAG_NAME, "a")
+        return len(links) > 0
