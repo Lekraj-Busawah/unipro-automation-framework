@@ -112,3 +112,29 @@ def step_impl(context, block_name, mobile_image_visibility):
 def step_impl(context, element_name):
     is_visible = context.homepage.is_element_displayed(element_name)
     assert is_visible is True, f"The {element_name} container was not visible on the page!"
+
+# ---------------------------------------------------------------------------
+# IMAGE GRID – CLIENTS
+# ---------------------------------------------------------------------------
+
+@then(u'the image grid has at least {tile_count} client tiles')
+def step_impl(context, tile_count):
+    count = context.homepage.get_number_tiles()
+    assert count == int(tile_count), f"Expected at least {tile_count} client tiles, but found {count}"
+
+@then(u'the client tile at position {tile_position} has an associated image')
+def step_impl(context, tile_position):
+    tile = context.homepage.get_tile_at_position(tile_position)
+    desktop_img = context.homepage.get_desktop_image_from_tile(tile)
+    assert desktop_img.get_attribute("src"), f"Tile {tile_position} desktop image has no src"
+
+
+@then(u'the client tile at position {tile_position} link presence is {link_presence}')
+def step_impl(context, tile_position, link_presence):
+    tile = context.homepage.get_tile_at_position(tile_position)
+    has_link = context.homepage.tile_has_link(tile)
+
+    if link_presence == "present":
+            assert has_link, f"Expected link in tile {tile_position}, but none found"
+    else:
+        assert not has_link, f"Expected no link in tile {tile_position}, but a link was found"
