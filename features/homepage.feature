@@ -122,7 +122,6 @@ Feature: Homepage marketing content and layout
       | clients heading          | demanding sectors         |
       | clients intro text block | custom software solutions |
 
-  @wip
   Scenario Outline: Image grid client tiles basic content and accessibility
     When the "clients" container is displayed
     Then the image grid has at least <tile_count> client tiles
@@ -143,3 +142,17 @@ Feature: Homepage marketing content and layout
       | 12         | 10            | absent        |
       | 12         | 11            | absent        |
       | 12         | 12            | absent        |
+
+  Scenario Outline: Image grid client tiles link targets for tiles with links
+    # When the "clients" container is displayed
+    Then the client tile at position <tile_position> links to <client_pdf_url> in a new tab
+
+    Examples:
+      | tile_position | client_pdf_url                                                                                                                    |
+      | 1             | https://www.unipro.io/wp-content/uploads/2025/07/Specsavers-Driving-E-Commerce-Innovation-2025-Stats-Version.pdf                  |
+      | 2             | https://www.unipro.io/wp-content/uploads/2025/07/Jacobs-Modernising-Asset-Management-Systems-2025-Stats-Version.pdf               |
+      | 3             | https://www.unipro.io/wp-content/uploads/2025/08/IFGL-Defining-and-Designing-a-Future-Ready-Digital-Portal-2025-Stats-Version.pdf |
+      | 4             | https://www.unipro.io/wp-content/uploads/2025/07/Peninsula-Streamlining-Global-Payroll-2025-Stats-Version.pdf                     |
+      # | 5             | https://www.unipro.io/wp-content/uploads/2025/07/PIAS-Success-Story-2025-Stats-Version.pdf |
+      | 6             | https://www.unipro.io/wp-content/uploads/2025/07/PIAS-Success-Story-2025-Stats-Version.pdf                                        |
+      | 7             | https://www.unipro.io/wp-content/uploads/2025/07/Montagu-Evans-Modernising-Business-Processes-2025-Stats-Version.pdf              |
