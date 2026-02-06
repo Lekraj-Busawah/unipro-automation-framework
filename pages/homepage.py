@@ -11,7 +11,7 @@ class Homepage(BasePage):
         # Containers / Sections
         "hero section": (By.CSS_SELECTOR, ".hero-block.block"),
         "hero heading": (By.CSS_SELECTOR, "div[class='typography'] h1"),
-        "intro feature text": (By.XPATH, "(//div[@class='intro-feature-text'])[1]"),
+        "hero intro feature text": (By.XPATH, "(//div[@class='intro-feature-text'])[1]"),
         "why": (By.CSS_SELECTOR, "#why"),
         "feature": (By.CSS_SELECTOR, ".feature-block.block"),
         "clients": (By.CSS_SELECTOR, "#clients"),
