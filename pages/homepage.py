@@ -66,6 +66,9 @@ class Homepage(BasePage):
     def get_desktop_image_from_tile(self, tile):
         return tile.find_element(By.CSS_SELECTOR, "img.hide-mobile")
     
+    def get_mobile_image_from_tile(self, tile):
+        return tile.find_element(By.CSS_SELECTOR, "img.hide-desktop")
+    
     def tile_has_link(self, tile):
         links = tile.find_elements(By.TAG_NAME, "a")
         return len(links) > 0
