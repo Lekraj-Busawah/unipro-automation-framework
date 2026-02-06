@@ -144,7 +144,7 @@ Feature: Homepage marketing content and layout
       | 12         | 12            | absent        |
 
   Scenario Outline: Image grid client tiles link targets for tiles with links
-    # When the "clients" container is displayed
+    When the "clients" container is displayed
     Then the client tile at position <tile_position> links to <client_pdf_url> in a new tab
 
     Examples:
@@ -156,3 +156,13 @@ Feature: Homepage marketing content and layout
       # | 5             | https://www.unipro.io/wp-content/uploads/2025/07/PIAS-Success-Story-2025-Stats-Version.pdf |
       | 6             | https://www.unipro.io/wp-content/uploads/2025/07/PIAS-Success-Story-2025-Stats-Version.pdf                                        |
       | 7             | https://www.unipro.io/wp-content/uploads/2025/07/Montagu-Evans-Modernising-Business-Processes-2025-Stats-Version.pdf              |
+  
+  Scenario Outline: Image grid responsive imagery behaviour
+    When the homepage is viewed on a <device_type> device
+    Then each client tile desktop image visibility is <desktop_image_visibility>
+    And each client tile mobile image visibility is <mobile_image_visibility>
+
+    Examples:
+      | device_type | desktop_image_visibility | mobile_image_visibility |
+      | desktop     | visible                  | hidden                  |
+      | mobile      | hidden                   | visible                 |
