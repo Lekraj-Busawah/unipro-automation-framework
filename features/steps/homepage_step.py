@@ -138,3 +138,15 @@ def step_impl(context, tile_position, link_presence):
             assert has_link, f"Expected link in tile {tile_position}, but none found"
     else:
         assert not has_link, f"Expected no link in tile {tile_position}, but a link was found"
+
+@then(u'the client tile at position {tile_position} links to {client_pdf_url} in a new tab')
+def step_impl(context, tile_position, client_pdf_url):
+
+    tile = context.homepage.get_tile_at_position(tile_position)
+
+
+    actual_href = context.homepage.get_link_href_from_tile(tile)
+    actual_target = context.homepage.get_link_target_from_tile(tile)
+
+    assert actual_href == client_pdf_url, "Expected tile {tile_position} to have a link but none was found"
+    assert actual_target == "_blank", f"Expected tile {tile_position} to open in a new tab (target=_blank), but target was '{actual_target}'"
