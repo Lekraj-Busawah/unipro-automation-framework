@@ -63,7 +63,7 @@ def step_impl(context, element_name, element_contains):
 
 @then(u'the call to action navigates to "{expected_url}"')
 def step_impl(context, expected_url):
-    context.homepage.click_element(context.homepage.locators["call to action"])
+    context.homepage.click_element(context.homepage.locators["feature call to action"])
 
     context.homepage.wait_for_url_to_be(expected_url)
 
