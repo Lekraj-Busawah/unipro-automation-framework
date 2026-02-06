@@ -14,10 +14,10 @@ Feature: Homepage marketing content and layout
     Then the "<element_name>" container should exist
 
     Examples:
-      | element_name       |
-      | hero section       |
-      | heading            |
-      | intro feature text |
+      | element_name            |
+      | hero section            |
+      | hero heading            |
+      | hero intro feature text |
 
   @content
   Scenario Outline: Verify hero headline and feature text are displayed
@@ -156,7 +156,7 @@ Feature: Homepage marketing content and layout
       # | 5             | https://www.unipro.io/wp-content/uploads/2025/07/PIAS-Success-Story-2025-Stats-Version.pdf |
       | 6             | https://www.unipro.io/wp-content/uploads/2025/07/PIAS-Success-Story-2025-Stats-Version.pdf                                        |
       | 7             | https://www.unipro.io/wp-content/uploads/2025/07/Montagu-Evans-Modernising-Business-Processes-2025-Stats-Version.pdf              |
-  
+
   Scenario Outline: Image grid responsive imagery behaviour
     When the homepage is viewed on a <device_type> device
     Then each client tile desktop image visibility is <desktop_image_visibility>
