@@ -144,9 +144,39 @@ def step_impl(context, tile_position, client_pdf_url):
 
     tile = context.homepage.get_tile_at_position(tile_position)
 
-
     actual_href = context.homepage.get_link_href_from_tile(tile)
     actual_target = context.homepage.get_link_target_from_tile(tile)
 
     assert actual_href == client_pdf_url, "Expected tile {tile_position} to have a link but none was found"
     assert actual_target == "_blank", f"Expected tile {tile_position} to open in a new tab (target=_blank), but target was '{actual_target}'"
+
+@then(u'each client tile desktop image visibility is {expected_state}')
+def step_impl(context, expected_state):
+
+    tiles = context.homepage.get_client_tiles()
+
+    for id, tile in enumerate(tiles, start=1):
+        desktop_img = context.homepage.get_desktop_image_from_tile(tile)
+        is_visible = desktop_img.is_displayed()
+
+        expected = (expected_state == "visible")
+        assert is_visible == expected, ( 
+            f"Desktop image for tile {id} was "
+            f"{'visible' if is_visible else 'hidden'}, "
+            f"but expected {expected_state}"
+        )
+
+@then("each client tile mobile image visibility is {expected_state}")
+def step_impl(context, expected_state):
+    tiles = context.homepage.get_client_tiles()
+
+    for id, tile in enumerate(tiles, start=1):
+        mobile_img = context.homepage.get_mobile_image_from_tile(tile)
+        is_visible = mobile_img.is_displayed()
+
+        expected = (expected_state == "visible")
+        assert is_visible == expected, (
+            f"Mobile image for tile {id} was "
+            f"{'visible' if is_visible else 'hidden'}, "
+            f"but expected {expected_state}"
+        )
