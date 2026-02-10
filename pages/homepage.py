@@ -50,7 +50,10 @@ class Homepage(BasePage):
         # Testimonials block
         "testimonials eyebrow": (By.XPATH, "//p[normalize-space()='Customer Quotes']"),
         "testimonials heading": (By.XPATH, "//h2[contains(text(),'But don’t just take our word for it…')]"),
-        "testimonials intro paragraph": (By.XPATH, "//p[contains(text(),'Getting great feedback from our clients')]")
+        "testimonials intro paragraph": (By.XPATH, "//p[contains(text(),'Getting great feedback from our clients')]"),
+        "testimonials list": (By.CSS_SELECTOR, ".testimonial-item__content > h3"),
+        "testimonials clients": (By.CSS_SELECTOR, ".testimonial-item__content > div"),
+        "testimonial decorative icon": (By.ID, "Layer_2"),
     }
 
     # ---------------------------------------------------------------------------
@@ -89,3 +92,18 @@ class Homepage(BasePage):
     def get_link_target_from_tile(self, tile):
         link = self.get_link_from_tile(tile)
         return link.get_attribute("target") if link else None
+    
+    def get_testimonials_list(self):
+        return self.get_elements("testimonials list")
+    
+    def get_testimonial_at_position(self, testimonial_position):
+        testimonials = self.get_testimonials_list()
+        return testimonials[int(testimonial_position) - 1]
+    
+    def get_testimonials_clients(self):
+        return self.get_elements("testimonials clients")
+    
+    def get_testimonial_client_at_position(self, testimonial_position):
+        clients = self.get_testimonials_clients()
+        return clients[int(testimonial_position) - 1]
+
