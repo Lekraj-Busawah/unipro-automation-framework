@@ -166,3 +166,19 @@ Feature: Homepage marketing content and layout
       | device_type | desktop_image_visibility | mobile_image_visibility |
       | desktop     | visible                  | hidden                  |
       | mobile      | hidden                   | visible                 |
+
+  # ---------------------------------------------------------------------------
+  # TESTIMONIALS
+  # ---------------------------------------------------------------------------
+
+  Scenario Outline: Testimonials section heading and intro
+    When the "testimonials" container is displayed
+    Then the <element_name> is visible and contains "<element_contains>"
+
+    Examples:
+      | element_name                 | element_contains         |
+      | testimonials eyebrow         | CUSTOMER QUOTES          |
+      | testimonials heading         | don’t just take our word |
+      | testimonials intro paragraph | Getting great feedback   |
+
+
