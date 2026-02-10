@@ -181,4 +181,18 @@ Feature: Homepage marketing content and layout
       | testimonials heading         | don’t just take our word |
       | testimonials intro paragraph | Getting great feedback   |
 
+  Scenario Outline: Individual testimonial contents
+    When the "testimonials" container is displayed
+    Then the testimonial at position <testimonial_position> has quote text <quote_text>
+    And the testimonial at position <testimonial_position> has client name <client_name>
 
+    Examples:
+      | testimonial_position | quote_text                                                                                                                                                                 | client_name      |
+      | 1                    | “The value of working with Unipro is not only due to their expertise in data engineering but also because they deliver solutions quickly, securing faster ROI for Jacobs.” | CHUCK FRANCESCHI |
+      | 2                    | “Thank you very much for your excellent and efficient work; it is always a pleasure to work with Unipro.”                                                                  | LEYLA MENEKSE    |
+      | 3                    | “Unipro knows what they’re doing — they just get it.”                                                                                                                      | TAG GUILLORY     |
+      | 4                    | “Our experience with Unipro has been exceptional, and the quote we received was outstanding”                                                                               | TOMAS MAAGS      |
+  
+  Scenario: Testimonials section decorative icon
+    When the "testimonials" container is displayed
+    Then the "testimonial decorative icon" is visible
