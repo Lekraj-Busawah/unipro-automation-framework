@@ -15,6 +15,7 @@ class Homepage(BasePage):
         "why": (By.CSS_SELECTOR, "#why"),
         "feature": (By.CSS_SELECTOR, ".feature-block.block"),
         "clients": (By.CSS_SELECTOR, "#clients"),
+        "testimonials": (By.CSS_SELECTOR, ".testimonial-list-block.block"),
 
         # Paragraphs
         1: (By.XPATH, "//p[contains(text(),'We are a custom software studio that replaces outd')]"),
@@ -46,6 +47,10 @@ class Homepage(BasePage):
         "clients intro text block": (By.CSS_SELECTOR, "div[class='left-column'] div[class='intro-feature-text']"),
         "client tile": (By.CSS_SELECTOR, ".image-grid-block__grid-single"),
 
+        # Testimonials block
+        "testimonials eyebrow": (By.XPATH, "//p[normalize-space()='Customer Quotes']"),
+        "testimonials heading": (By.XPATH, "//h2[contains(text(),'But don’t just take our word for it…')]"),
+        "testimonials intro paragraph": (By.XPATH, "//p[contains(text(),'Getting great feedback from our clients')]")
     }
 
     # ---------------------------------------------------------------------------
