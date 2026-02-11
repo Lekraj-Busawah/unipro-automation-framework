@@ -9,7 +9,7 @@ Feature: Homepage marketing content and layout
   # HERO SECTION
   # ---------------------------------------------------------------------------
 
-  @structure
+  @homepage @hero-section @structure
   Scenario Outline: Validate existence of key structural containers in the hero section
     Then the "<element_name>" container should exist
 
@@ -19,7 +19,7 @@ Feature: Homepage marketing content and layout
       | hero heading            |
       | hero intro feature text |
 
-  @content
+  @homepage @hero-section @content
   Scenario Outline: Verify hero headline and feature text are displayed
     Then the hero heading text should equal "<expected_text>"
     And the intro feature text at position <paragraph_index> should equal "<paragraph_text>"
@@ -30,7 +30,7 @@ Feature: Homepage marketing content and layout
       | BESPOKE SOFTWARE. UNRIVALLED ADVANTAGE. | 2               | With bespoke systems and Agentic AI, we eliminate the drain of legacy debt and unify your data, building bespoke solutions that seamlessly embed intelligence – anticipating needs, automating decisions, and driving immediate commercial impact. |
       | BESPOKE SOFTWARE. UNRIVALLED ADVANTAGE. | 3               | You define the roadmap. We create the advantage.                                                                                                                                                                                                   |
 
-  @responsive @desktop
+  @homepage @hero-section @responsive @desktop
   Scenario Outline: Verify hero image visibility on Desktop
     When the homepage is viewed on a <device_type> device
     Then the "<visible_image>" visibility should be visible
@@ -40,7 +40,7 @@ Feature: Homepage marketing content and layout
       | device_type | visible_image      | hidden_image      |
       | desktop     | desktop hero image | mobile hero image |
 
-  @responsive @mobile
+  @homepage @hero-section @responsive @mobile
   Scenario Outline: Verify hero image visibility on Mobile
     When the homepage is viewed on a <device_type> device
     Then the "<visible_image>" visibility should be visible
@@ -89,7 +89,7 @@ Feature: Homepage marketing content and layout
   # FEATURE BLOCK – "The Unipro advantage"
   # ---------------------------------------------------------------------------
 
-  @homepage @feature-section
+  @homepage @feature-section @content
   Scenario Outline: Display of feature block content and CTA
     When the "feature" container is displayed
     Then the <element_name> is visible and contains "<element_contains>"
@@ -117,6 +117,7 @@ Feature: Homepage marketing content and layout
   # IMAGE GRID – CLIENTS
   # ---------------------------------------------------------------------------
 
+  @homepage @clients-section @content
   Scenario Outline: Display of image grid heading content
     When the "clients" container is displayed
     Then the <element_name> is visible and contains "<element_contains>"
@@ -127,6 +128,7 @@ Feature: Homepage marketing content and layout
       | clients heading          | demanding sectors         |
       | clients intro text block | custom software solutions |
 
+  @homepage @clients-section
   Scenario Outline: Image grid client tiles basic content and accessibility
     When the "clients" container is displayed
     Then the image grid has at least <tile_count> client tiles
@@ -148,6 +150,7 @@ Feature: Homepage marketing content and layout
       | 12         | 11            | absent        |
       | 12         | 12            | absent        |
 
+  @homepage @clients-section @navigation
   Scenario Outline: Image grid client tiles link targets for tiles with links
     When the "clients" container is displayed
     Then the client tile at position <tile_position> links to <client_pdf_url> in a new tab
@@ -162,6 +165,7 @@ Feature: Homepage marketing content and layout
       | 6             | https://www.unipro.io/wp-content/uploads/2025/07/PIAS-Success-Story-2025-Stats-Version.pdf                                        |
       | 7             | https://www.unipro.io/wp-content/uploads/2025/07/Montagu-Evans-Modernising-Business-Processes-2025-Stats-Version.pdf              |
 
+  @homepage @clients-section @responsive
   Scenario Outline: Image grid responsive imagery behaviour
     When the homepage is viewed on a <device_type> device
     Then each client tile desktop image visibility is <desktop_image_visibility>
@@ -176,6 +180,7 @@ Feature: Homepage marketing content and layout
   # TESTIMONIALS
   # ---------------------------------------------------------------------------
 
+  @homepage @testimonials-section @content
   Scenario Outline: Testimonials section heading and intro
     When the "testimonials" container is displayed
     Then the <element_name> is visible and contains "<element_contains>"
@@ -186,6 +191,7 @@ Feature: Homepage marketing content and layout
       | testimonials heading         | don’t just take our word |
       | testimonials intro paragraph | Getting great feedback   |
 
+  @homepage @testimonials-section @content
   Scenario Outline: Individual testimonial contents
     When the "testimonials" container is displayed
     Then the testimonial at position <testimonial_position> has quote text <quote_text>
@@ -198,6 +204,7 @@ Feature: Homepage marketing content and layout
       | 3                    | Unipro knows what they’re doing — they just get it.       | TAG GUILLORY     |
       | 4                    | Our experience with Unipro has been exceptional           | TOMAS MAAGS      |
 
+  @homepage @testimonials-section
   Scenario: Testimonials section decorative icon
     When the "testimonials" container is displayed
     Then the "testimonial decorative icon" is visible
@@ -206,6 +213,7 @@ Feature: Homepage marketing content and layout
   # CTA BLOCK – "Secure your digital autonomy"
   # ---------------------------------------------------------------------------
 
+  @homepage @cta-section @content
   Scenario Outline: CTA block content and button behaviour
     When the "CTA" container is displayed
     Then the <element_name> is visible and contains "<element_contains>"
@@ -217,6 +225,7 @@ Feature: Homepage marketing content and layout
       | CTA intro text block | No pressure, no commitment |
       | CTA button           | Contact Us                 |
   
+  @homepage @cta-section @navigation
   Scenario Outline: Verify "Contact Us" section CTA redirect
     Then the <element_name> navigates to "<expected_url>"
 
