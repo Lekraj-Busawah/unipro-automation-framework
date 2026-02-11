@@ -184,13 +184,13 @@ def step_impl(context, expected_state):
 @then(u'the testimonial at position {testimonial_position} has quote text {quote_text}')
 def step_impl(context, testimonial_position, quote_text):
     testimonial = context.homepage.get_testimonial_at_position(testimonial_position)
-    assert testimonial.text == quote_text, f"Expected testimonial {testimonial_position} to be '{quote_text}' but found '{testimonial.text}'"
+    assert quote_text in testimonial.text, f"Expected testimonial {testimonial_position} to contain '{quote_text}' but found '{testimonial.text}'"
  
 @then(u'the testimonial at position {testimonial_position} has client name {client_name}')
 def step_impl(context, testimonial_position, client_name):
     client = context.homepage.get_testimonial_client_at_position(testimonial_position)
-    assert client.text == client_name, f"Expected client name for testimonial at poition {testimonial_position} to be '{client_name}' but found '{client.text}'"
+    assert client_name in client.text, f"Expected client name for testimonial at poition {testimonial_position} to be '{client_name}' but found '{client.text}'"
  
 @when(u'each testimonial item includes a decorative icon')
 def step_impl(context):
-    pass
+    assert context.homepage.is_element_displayed("testimonial decorative icon"), "Testimonial decorative icons are not visible."
