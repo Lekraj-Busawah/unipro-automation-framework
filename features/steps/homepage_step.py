@@ -61,9 +61,9 @@ def step_impl(context, element_name, element_contains):
     assert element_contains in actual_text, f"Expected text to contain '{element_contains}' but found {actual_text}"
 
 
-@then(u'the call to action navigates to "{expected_url}"')
-def step_impl(context, expected_url):
-    context.homepage.click_element(context.homepage.locators["feature call to action"])
+@then(u'the {element_name} navigates to "{expected_url}"')
+def step_impl(context, element_name, expected_url):
+    context.homepage.click_element(context.homepage.locators[element_name])
 
     context.homepage.wait_for_url_to_be(expected_url)
 
