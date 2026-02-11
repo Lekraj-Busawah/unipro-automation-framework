@@ -102,7 +102,7 @@ Feature: Homepage marketing content and layout
   Scenario: Feature block imagery
     When the "feature" container is displayed
     Then the "feature image" is visible
-  
+
   @homepage @feature-section @navigation
   Scenario Outline: Verify "feature" section CTA redirect
     Then the <element_name> navigates to "<expected_url>"
@@ -213,6 +213,10 @@ Feature: Homepage marketing content and layout
       | CTA heading          | digital autonomy           |
       | CTA intro text block | No pressure, no commitment |
       | CTA button           | Contact Us                 |
+  
+  Scenario Outline: Verify "Contact Us" section CTA redirect
+    Then the <element_name> navigates to "<expected_url>"
 
-  Scenario: Verify "Contact Us" CTA redirect
-    Then the call to action navigates to "https://www.unipro.io/contact-us/"
+    Examples:
+      | element_name | expected_url                      |
+      | CTA button   | https://www.unipro.io/contact-us/ |
