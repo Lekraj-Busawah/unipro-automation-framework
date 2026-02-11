@@ -90,7 +90,6 @@ Feature: Homepage marketing content and layout
   Scenario Outline: Display of feature block content and CTA
     When the "feature" container is displayed
     Then the <element_name> is visible and contains "<element_contains>"
-    # And the feature primary call-to-action button navigates to <button_target_url>
 
     Examples:
       | element_name             | element_contains     |
@@ -103,10 +102,13 @@ Feature: Homepage marketing content and layout
   Scenario: Feature block imagery
     When the "feature" container is displayed
     Then the "feature image" is visible
-
+  
   @homepage @feature-section @navigation
-  Scenario: Verify "feature" section CTA redirect
-    Then the call to action navigates to "https://www.unipro.io/contact-us/"
+  Scenario Outline: Verify "feature" section CTA redirect
+    Then the <element_name> navigates to "<expected_url>"
+    Examples:
+      | element_name           | expected_url                      |
+      | feature call to action | https://www.unipro.io/contact-us/ |
 
   # ---------------------------------------------------------------------------
   # IMAGE GRID – CLIENTS
@@ -211,3 +213,6 @@ Feature: Homepage marketing content and layout
       | CTA heading          | digital autonomy           |
       | CTA intro text block | No pressure, no commitment |
       | CTA button           | Contact Us                 |
+
+  Scenario: Verify "Contact Us" CTA redirect
+    Then the call to action navigates to "https://www.unipro.io/contact-us/"
