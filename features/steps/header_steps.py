@@ -43,16 +43,14 @@ def step_impl(context, expected_path):
 
 
 # Scenario Outline: Header adapts to responsive breakpoints
-@given(u'I set the viewport width to "{viewport_width}"')
-def step_impl(context, viewport_width):
-    # Convert string to int
-    width = int(viewport_width)
+@when(u'the header is viewed on a {device_type} device')
+def step_impl(context, device_type):
     # Delegate to the Page Object
-    context.header.set_viewport_size(width, 800)
+    context.header.set_viewport_size(device_type)
 
 
-@then(u'the header layout should adjust to the "{expected_layout}" layout')
-def step_impl(context, expected_layout):
-    if expected_layout in ['mobile', 'tablet']:
+@then(u'the header layout should adjust to the {device_type} layout')
+def step_impl(context, device_type):
+    if device_type in ['mobile', 'tablet']:
         assert context.header.is_hamburger_visible(), \
-            f"Hamburger menu not visible in {expected_layout} layout"
+            f"Hamburger menu not visible in {device_type} layout"
