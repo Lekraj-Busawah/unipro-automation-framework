@@ -67,9 +67,12 @@ Feature: Homepage marketing content and layout
       | why call to action   | keeping you up at night |
 
   @homepage @why-section @navigation
-  Scenario: Verify "why" section CTA redirect
-    Then the call to action navigates to "https://www.unipro.io/contact-us/"
+  Scenario Outline: Verify "why" section CTA redirect
+    Then the <element_name> navigates to "<expected_url>"
 
+    Examples:
+      | element_name       | expected_url                      |
+      | why call to action | https://www.unipro.io/contact-us/ |
 
   @homepage @why-section @reponsive
   Scenario Outline: Responsive imagery for "why" content block
