@@ -16,6 +16,7 @@ class Homepage(BasePage):
         "feature": (By.CSS_SELECTOR, ".feature-block.block"),
         "clients": (By.CSS_SELECTOR, "#clients"),
         "testimonials": (By.CSS_SELECTOR, ".testimonial-list-block.block"),
+        "CTA": (By.CSS_SELECTOR, ".cta-block.block"),
 
         # Paragraphs
         1: (By.XPATH, "//p[contains(text(),'We are a custom software studio that replaces outd')]"),
@@ -54,6 +55,12 @@ class Homepage(BasePage):
         "testimonials list": (By.CSS_SELECTOR, ".testimonial-item__content > h3"),
         "testimonials clients": (By.CSS_SELECTOR, ".testimonial-item__content > div"),
         "testimonial decorative icon": (By.ID, "Layer_2"),
+
+        # CTA block
+        "CTA eyebrow": (By.CSS_SELECTOR, "div[class='cta-block__content block--dark-purple'] p[class='eyebrow']"),
+        "CTA heading": (By.CSS_SELECTOR, "div[class='cta-block__content block--dark-purple'] h2"),
+        "CTA intro text block": (By.CSS_SELECTOR, "div[class='cta-block__content block--dark-purple'] span"),
+        "CTA button": (By.CSS_SELECTOR, "a[class='button']"),
     }
 
     # ---------------------------------------------------------------------------
