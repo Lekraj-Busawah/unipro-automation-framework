@@ -32,23 +32,23 @@ Feature: Homepage marketing content and layout
 
   @homepage @hero-section @responsive @desktop
   Scenario Outline: Verify hero image visibility on Desktop
-    When the homepage is viewed on a <device_type> device
+    When the <page> is viewed on a <device_type> device
     Then the "<visible_image>" visibility should be visible
     And the "<hidden_image>" visibility should be hidden
 
     Examples:
-      | device_type | visible_image      | hidden_image      |
-      | desktop     | desktop hero image | mobile hero image |
+      | page     | device_type | visible_image      | hidden_image      |
+      | homepage | desktop     | desktop hero image | mobile hero image |
 
   @homepage @hero-section @responsive @mobile
   Scenario Outline: Verify hero image visibility on Mobile
-    When the homepage is viewed on a <device_type> device
+    When the <page> is viewed on a <device_type> device
     Then the "<visible_image>" visibility should be visible
     And the "<hidden_image>" visibility should be hidden
 
     Examples:
-      | device_type | visible_image     | hidden_image       |
-      | mobile      | mobile hero image | desktop hero image |
+      | page     | device_type | visible_image     | hidden_image       |
+      | homepage | mobile      | mobile hero image | desktop hero image |
 
   # ---------------------------------------------------------------------------
   # "WHY" CONTENT BLOCK (The problem & the Guide)
@@ -224,7 +224,7 @@ Feature: Homepage marketing content and layout
       | CTA heading          | digital autonomy           |
       | CTA intro text block | No pressure, no commitment |
       | CTA button           | Contact Us                 |
-  
+
   @homepage @cta-section @navigation
   Scenario Outline: Verify "Contact Us" section CTA redirect
     Then the <element_name> navigates to "<expected_url>"
