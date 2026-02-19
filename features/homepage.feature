@@ -76,7 +76,7 @@ Feature: Homepage marketing content and layout
 
   @homepage @why-section @reponsive
   Scenario Outline: Responsive imagery for "why" content block
-    When the homepage is viewed on a <device_type> device
+    When the <page> is viewed on a <device_type> device
     Then the <block_name> desktop image visibility is <desktop_image_visibility>
     And the <block_name> mobile image visibility is <mobile_image_visibility>
 
@@ -167,7 +167,7 @@ Feature: Homepage marketing content and layout
 
   @homepage @clients-section @responsive
   Scenario Outline: Image grid responsive imagery behaviour
-    When the homepage is viewed on a <device_type> device
+    When the <page> is viewed on a <device_type> device
     Then each client tile desktop image visibility is <desktop_image_visibility>
     And each client tile mobile image visibility is <mobile_image_visibility>
 
