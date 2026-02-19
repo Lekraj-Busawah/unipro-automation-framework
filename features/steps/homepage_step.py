@@ -75,8 +75,8 @@ def step_impl(context, element_name, expected_url):
     assert status == 200, f"Expected 200 but got {status}"
 
 
-@when(u'the homepage is viewed on a {device_type} device')
-def step_impl(context, device_type):
+@when(u'the {page} is viewed on a {device_type} device')
+def step_impl(context, page, device_type):
     context.current_page.set_viewport_size(device_type)
     context.driver.refresh()
 
