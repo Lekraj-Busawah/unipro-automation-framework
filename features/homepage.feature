@@ -81,9 +81,9 @@ Feature: Homepage marketing content and layout
     And the <block_name> mobile image visibility is <mobile_image_visibility>
 
     Examples:
-      | device_type | block_name | desktop_image_visibility | mobile_image_visibility |
-      | desktop     | why        | visible                  | hidden                  |
-      | mobile      | why        | hidden                   | visible                 |
+      | page     | device_type | block_name | desktop_image_visibility | mobile_image_visibility |
+      | homepage | desktop     | why        | visible                  | hidden                  |
+      | homepage | mobile      | why        | hidden                   | visible                 |
 
   # ---------------------------------------------------------------------------
   # FEATURE BLOCK – "The Unipro advantage"
@@ -172,9 +172,9 @@ Feature: Homepage marketing content and layout
     And each client tile mobile image visibility is <mobile_image_visibility>
 
     Examples:
-      | device_type | desktop_image_visibility | mobile_image_visibility |
-      | desktop     | visible                  | hidden                  |
-      | mobile      | hidden                   | visible                 |
+      | page     | device_type | desktop_image_visibility | mobile_image_visibility |
+      | homepage | desktop     | visible                  | hidden                  |
+      | homepage | mobile      | hidden                   | visible                 |
 
   # ---------------------------------------------------------------------------
   # TESTIMONIALS
