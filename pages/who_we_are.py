@@ -24,8 +24,25 @@ class WhoWeAre(BasePage):
         "team intro text block": (By.CSS_SELECTOR, "div[class='content-block__typography'] div[class='intro-feature-text'] p"),
         "team desktop image": (By.CSS_SELECTOR, "img[alt='Unipro Team']"),
 
+        # Culture block
+        "culture": (By.CSS_SELECTOR, "#culture"),
+        "culture eyebrow text": (By.CSS_SELECTOR, "div[id='culture'] p[class='eyebrow']"),
+        "culture heading": (By.CSS_SELECTOR, "div[id='culture'] h2"),
+        "culture intro text block": (By.CSS_SELECTOR, "div[id='culture'] div[class='intro-feature-text'] p"),
+        "culture grid": (By.CSS_SELECTOR, ".text-grid-block__content"),
+        "culture grid item": (By.CSS_SELECTOR, ".text-grid-block__item"),
+        "culture grid item title": (By.CSS_SELECTOR, ".text-grid-block__item-title"),
+        "culture grid item copy": (By.CSS_SELECTOR, ".text-grid-block__item-copy"),
     }
 
     # ---------------------------------------------------------------------------
     # ACTIONS
     # ---------------------------------------------------------------------------
+
+    def get_culture_grid_items(self, locator):
+        return self.get_elements(locator)
+    
+    def get_culture_grid_items_at_index(self, locator, position):
+        items = self.get_elements(locator)
+        item = items[position - 1]
+        return item
