@@ -62,7 +62,40 @@ Feature: Who We Are page - Content rendering, responsiveness, and CTAs
         Then the <block_name> desktop image visibility is <desktop_image_visibility>
 
         Examples:
-            | page       | device_type | block_name | desktop_image_visibility |  
-            | who we are | desktop     | team       | visible                  |                   
-            | who we are | mobile      | team       | hidden                   |                   
+            | page       | device_type | block_name | desktop_image_visibility |
+            | who we are | desktop     | team       | visible                  |
+            | who we are | mobile      | team       | hidden                   |
 
+    # ---------------------------------------------------------------------------
+    # CULTURE SECTION
+    # ---------------------------------------------------------------------------
+
+    @whoweare @culture @content
+    Scenario Outline: Culture section container and copy presence
+        When the "culture" container is displayed
+        Then the <element_name> is visible and contains "<element_contains>"
+
+        Examples:
+            | element_name             | element_contains        |
+            | culture eyebrow text     | FOUNDATIONAL PRINCIPLES |
+            | culture heading          | Autonomy                |
+            | culture intro text block | Our culture             |
+
+    @whoweare @culture @grid
+    Scenario: Culture grid has exactly 4 principles
+        When the "culture" container is displayed
+        Then the "culture" grid has exactly "4" items
+
+    @whoweare @culture @grid
+    Scenario Outline: Culture grid items - titles present
+        When the "culture" container is displayed
+        Then the "culture" grid item at position "<index>" has title "<title>"
+        Then the "culture" grid item at position "<index>" has copy "<copy>"
+
+
+        Examples:
+            | index | title                   | copy                                          |
+            | 1     | Make it Happen          | dissect complex issues                        |
+            | 2     | Make it Better          | relentless drive for improvement              |
+            | 3     | Accountable Partnership | honesty, respect, listening, and transparency |
+            | 4     | Embrace Empowerment     | complete control                              |
