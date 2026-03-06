@@ -33,6 +33,12 @@ class WhoWeAre(BasePage):
         "culture grid item": (By.CSS_SELECTOR, ".text-grid-block__item"),
         "culture grid item title": (By.CSS_SELECTOR, ".text-grid-block__item-title"),
         "culture grid item copy": (By.CSS_SELECTOR, ".text-grid-block__item-copy"),
+
+        # Process block
+        "process": (By.CSS_SELECTOR, ".slideshow-block.block.block--white"),
+        "process eyebrow text": (By.CSS_SELECTOR, "div[class='slideshow-block__content'] p[class='eyebrow']"),
+        "process heading": (By.CSS_SELECTOR, "div[class='slideshow-block__content'] h2"),
+        "process intro text block": (By.CSS_SELECTOR, "div[class='slideshow-block__content'] div[class='intro-feature-text']"),
     }
 
     # ---------------------------------------------------------------------------
