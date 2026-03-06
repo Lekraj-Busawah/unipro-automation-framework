@@ -99,3 +99,18 @@ Feature: Who We Are page - Content rendering, responsiveness, and CTAs
             | 2     | Make it Better          | relentless drive for improvement              |
             | 3     | Accountable Partnership | honesty, respect, listening, and transparency |
             | 4     | Embrace Empowerment     | complete control                              |
+
+    # ---------------------------------------------------------------------------
+    # PROCESS SECTION
+    # ---------------------------------------------------------------------------
+
+    @whoweare @process
+    Scenario Outline: Verify Process section content presence and partial copy
+        When the "process" container is displayed
+        Then the <element_name> is visible and contains "<element_contains>"
+
+        Examples:
+            | element_name             | element_contains   |
+            | process eyebrow text     | THE UNIPRO PROCESS |
+            | process heading          | Digital Autonomy   |
+            | process intro text block | 6-Step Process     |
