@@ -114,3 +114,14 @@ Feature: Who We Are page - Content rendering, responsiveness, and CTAs
             | process eyebrow text     | THE UNIPRO PROCESS |
             | process heading          | Digital Autonomy   |
             | process intro text block | 6-Step Process     |
+
+    @whoweare @process @team @responsive @wip
+    Scenario Outline: Process section image visibility and loading by breakpoint
+        When the <page> is viewed on a <device_type> device
+        Then the <block_name> desktop image visibility is <desktop_image_visibility>
+        Then the <block_name> mobile image visibility is <mobile_image_visibility>
+
+        Examples:
+            | page       | device_type | block_name | desktop_image_visibility | mobile_image_visibility |
+            | who we are | desktop     | process    | visible                  | hidden                  |
+            | who we are | mobile      | process    | hidden                   | visible                 |
