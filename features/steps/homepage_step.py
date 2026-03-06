@@ -90,7 +90,7 @@ def step_impl(context, block_name, expected_visibility):
     actual = "visible" if is_visible else "hidden"
     
     assert actual == expected_visibility, \
-        f"Responsive Error: {locator_key} should be {expected_visibility} on {context.current_device}"
+        f"Responsive Error: {locator_key} should be {expected_visibility} on Desktop"
 
 
 @then(u'the {block_name} mobile image visibility is {mobile_image_visibility}')
@@ -102,7 +102,7 @@ def step_impl(context, block_name, mobile_image_visibility):
     actual = "visible" if is_visible else "hidden"
     
     assert actual == mobile_image_visibility, \
-        f"Responsive Error: {locator_key} should be {mobile_image_visibility} on {context.current_device}"
+        f"Responsive Error: {locator_key} should be {mobile_image_visibility} on Mobile"
     
 # ---------------------------------------------------------------------------
 # FEATURE BLOCK – "The Unipro advantage"
