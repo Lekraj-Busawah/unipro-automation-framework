@@ -209,3 +209,6 @@ class BasePage:
             return element.is_displayed()
         except (TimeoutException, NoSuchElementException):
             return False
+        
+    def get_section_grid_items(self, locator):
+        return self.get_elements(locator)
