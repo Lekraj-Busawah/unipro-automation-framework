@@ -36,3 +36,20 @@ def step_impl(context, culture, position_index, copy):
     item = context.current_page.get_culture_grid_items_at_index(locator_key, int(position_index))
     item_copy = item.text
     assert copy in item_copy, f"Expected copy at position {position_index} to be {copy} but found {item_copy}"   
+
+@when(u'the {section} image grid is displayed')
+def step_impl(context, section):
+    locator_key = f"{section} image grid"
+    
+    is_visible = context.current_page.is_element_displayed(locator_key)
+    
+    assert is_visible, f"{section} image grid was not visible"
+
+@then(u'the {section} image grid has at least {min_items} items')
+def step_impl(context, section, min_items):
+    locator_key = f"{section} image grid"
+
+    grid_items = context.current_page.get_section_grid_items(locator_key)
+    grid_item_length = len(grid_items)
+    min_items = int(min_items)
+    assert grid_item_length == min_items, f"Expected {min_items} items in the grid but found {grid_item_length}"
