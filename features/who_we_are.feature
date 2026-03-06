@@ -56,9 +56,9 @@ Feature: Who We Are page - Content rendering, responsiveness, and CTAs
             | team intro text block | human-led, transparent process |
 
 
-    @whoweare @team @responsive
+    @whoweare @team @responsive 
     Scenario Outline: Team section image visibility and loading by breakpoint
-        When the homepage is viewed on a <device_type> device
+        When the <page> is viewed on a <device_type> device
         Then the <block_name> desktop image visibility is <desktop_image_visibility>
 
         Examples:
@@ -115,7 +115,7 @@ Feature: Who We Are page - Content rendering, responsiveness, and CTAs
             | process heading          | Digital Autonomy   |
             | process intro text block | 6-Step Process     |
 
-    @whoweare @process @team @responsive @wip
+    @whoweare @process @team @responsive 
     Scenario Outline: Process section image visibility and loading by breakpoint
         When the <page> is viewed on a <device_type> device
         Then the <block_name> desktop image visibility is <desktop_image_visibility>
