@@ -140,3 +140,13 @@ Feature: Who We Are page - Content rendering, responsiveness, and CTAs
             | tooling eyebrow text     | TOOLING                           |
             | tooling heading          | Human-Led, AI-Accelerated         |
             | tooling intro text block | strategic use of advanced tooling |
+
+    @tooling @grid @responsive @wip
+    Scenario Outline: Tooling image grid renders and images load
+        When the <page> is viewed on a <device_type> device
+        When the <section> image grid is displayed
+        Then the <section> image grid has at least <min_items> items
+
+        Examples:
+            | page       | section | device_type | min_items |
+            | who we are | tooling | desktop     | 8         |
