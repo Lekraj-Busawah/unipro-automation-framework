@@ -42,7 +42,12 @@ class WhoWeAre(BasePage):
         "process desktop image": (By.XPATH, "//div[@class='slideshow-block__slide']//img[contains(@class, 'hide-mobile')]"),
         "process mobile image": (By.XPATH, "//div[@class='slideshow-block__slide']//img[contains(@class, 'hide-desktop')]"),
 
-
+        # Tooling block
+        "tooling": (By.CSS_SELECTOR, "div.image-grid-block.block--light-grey"),
+        "tooling eyebrow text": (By.XPATH, "//p[contains(text(), 'Our Tooling')]"),
+        "tooling heading": (By.XPATH, "//h2[contains(text(), 'Human-Led, AI-Accelerated')]"),
+        "tooling intro text block": (By.XPATH, "//div[contains(@class, 'intro-feature-text')]/p[contains(., 'agentic AI')]"),
+           
     }
 
     # ---------------------------------------------------------------------------
