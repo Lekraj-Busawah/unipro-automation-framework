@@ -56,7 +56,7 @@ Feature: Who We Are page - Content rendering, responsiveness, and CTAs
             | team intro text block | human-led, transparent process |
 
 
-    @whoweare @team @responsive 
+    @whoweare @team @responsive
     Scenario Outline: Team section image visibility and loading by breakpoint
         When the <page> is viewed on a <device_type> device
         Then the <block_name> desktop image visibility is <desktop_image_visibility>
@@ -104,7 +104,7 @@ Feature: Who We Are page - Content rendering, responsiveness, and CTAs
     # PROCESS SECTION
     # ---------------------------------------------------------------------------
 
-    @whoweare @process
+    @whoweare @process @content
     Scenario Outline: Verify Process section content presence and partial copy
         When the "process" container is displayed
         Then the <element_name> is visible and contains "<element_contains>"
@@ -115,7 +115,7 @@ Feature: Who We Are page - Content rendering, responsiveness, and CTAs
             | process heading          | Digital Autonomy   |
             | process intro text block | 6-Step Process     |
 
-    @whoweare @process @team @responsive 
+    @whoweare @process @team @responsive
     Scenario Outline: Process section image visibility and loading by breakpoint
         When the <page> is viewed on a <device_type> device
         Then the <block_name> desktop image visibility is <desktop_image_visibility>
@@ -125,3 +125,18 @@ Feature: Who We Are page - Content rendering, responsiveness, and CTAs
             | page       | device_type | block_name | desktop_image_visibility | mobile_image_visibility |
             | who we are | desktop     | process    | visible                  | hidden                  |
             | who we are | mobile      | process    | hidden                   | visible                 |
+
+    # ---------------------------------------------------------------------------
+    # TOOLING SECTION
+    # ---------------------------------------------------------------------------
+
+    @whoweare @tooling @content
+    Scenario Outline: Verify Tooling section content presence and partial copy
+        When the "tooling" container is displayed
+        Then the <element_name> is visible and contains "<element_contains>"
+
+        Examples:
+            | element_name             | element_contains                  |
+            | tooling eyebrow text     | TOOLING                           |
+            | tooling heading          | Human-Led, AI-Accelerated         |
+            | tooling intro text block | strategic use of advanced tooling |
