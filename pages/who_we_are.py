@@ -39,6 +39,10 @@ class WhoWeAre(BasePage):
         "process eyebrow text": (By.CSS_SELECTOR, "div[class='slideshow-block__content'] p[class='eyebrow']"),
         "process heading": (By.CSS_SELECTOR, "div[class='slideshow-block__content'] h2"),
         "process intro text block": (By.CSS_SELECTOR, "div[class='slideshow-block__content'] div[class='intro-feature-text']"),
+        "process desktop image": (By.XPATH, "//div[@class='slideshow-block__slide']//img[contains(@class, 'hide-mobile')]"),
+        "process mobile image": (By.XPATH, "//div[@class='slideshow-block__slide']//img[contains(@class, 'hide-desktop')]"),
+
+
     }
 
     # ---------------------------------------------------------------------------
