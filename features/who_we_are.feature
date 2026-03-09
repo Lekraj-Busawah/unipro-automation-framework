@@ -150,3 +150,5 @@ Feature: Who We Are page - Content rendering, responsiveness, and CTAs
         Examples:
             | page       | section | device_type | min_items |
             | who we are | tooling | desktop     | 8         |
+            | who we are | tooling | mobile      | 8         |
+
