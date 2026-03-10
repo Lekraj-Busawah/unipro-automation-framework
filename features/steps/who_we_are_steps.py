@@ -53,3 +53,42 @@ def step_impl(context, section, min_items):
     grid_item_length = len(grid_items)
     min_items = int(min_items)
     assert grid_item_length == min_items, f"Expected {min_items} items in the grid but found {grid_item_length}"
+
+
+@then(u'the "{section}" has at least {min_items} items')
+def step_impl(context, section, min_items):
+    locator_key = f"{section} items"
+
+    grid_items = context.current_page.get_section_grid_items(locator_key)
+    grid_item_length = len(grid_items)
+    min_items = int(min_items)
+    assert grid_item_length == min_items, f"Expected {min_items} items in the grid but found {grid_item_length}"
+
+
+@then(u'each testimonial card has non-empty quote text')
+def step_impl(context):
+    locator_key = "testimonials copy"
+
+    testimonials_copy = context.current_page.get_elements(locator_key)
+    
+    text = " ".join(
+                p.text.strip() for p in testimonials_copy if p.text.strip()
+            )
+
+    assert text != "", f"Card has empty quote text"
+
+@then(u'each testimonial card has at least one attribution field present (name or business)')
+def step_impl(context):
+    testimonial_name_locator_key = "testimonials name"
+    testimonial_business_locator_key = "testimonials business"
+
+    name_elements = context.current_page.get_elements(testimonial_name_locator_key)
+    business_elements = context.current_page.get_elements(testimonial_business_locator_key)
+
+    max_len = max(len(name_elements), len(business_elements))
+
+    for i in range(max_len):
+        name = name_elements[i].text.strip() if i < len(name_elements) and name_elements[i].text.strip() else ""
+        business = business_elements[i].text.strip() if i < len(business_elements) and business_elements[i].text.strip() else ""
+
+        assert (name or business), f"Card {i} has no attribution (name or business)"
