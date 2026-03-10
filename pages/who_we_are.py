@@ -48,6 +48,13 @@ class WhoWeAre(BasePage):
         "tooling heading": (By.XPATH, "//h2[contains(text(), 'Human-Led, AI-Accelerated')]"),
         "tooling intro text block": (By.XPATH, "//div[contains(@class, 'intro-feature-text')]/p[contains(., 'agentic AI')]"),
         "tooling image grid": (By.XPATH, "(//div[contains(@class, 'image-grid-block__grid four-columns')])[1]/div"),
+
+        # Accreditations block
+        "accreditations": (By.XPATH, "//div[@id='accreditations']"),
+        "accreditations eyebrow text": (By.XPATH, "//p[contains(@class, 'eyebrow') and contains(., 'Our accreditations')]"),
+        "accreditations heading": (By.XPATH, "//div[@id='accreditations']//h2"),
+        "accreditations image grid": (By.CSS_SELECTOR, "#accreditations div.image-grid-block__grid.four-columns > div"),
+
     }
 
     # ---------------------------------------------------------------------------
