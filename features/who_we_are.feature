@@ -141,7 +141,7 @@ Feature: Who We Are page - Content rendering, responsiveness, and CTAs
             | tooling heading          | Human-Led, AI-Accelerated         |
             | tooling intro text block | strategic use of advanced tooling |
 
-    @tooling @grid @responsive @wip
+    @whoweare @tooling @grid @responsive
     Scenario Outline: Tooling image grid renders and images load
         When the <page> is viewed on a <device_type> device
         When the <section> image grid is displayed
@@ -152,3 +152,27 @@ Feature: Who We Are page - Content rendering, responsiveness, and CTAs
             | who we are | tooling | desktop     | 8         |
             | who we are | tooling | mobile      | 8         |
 
+    # ---------------------------------------------------------------------------
+    # ACCREDITATIONS SECTION
+    # ---------------------------------------------------------------------------
+
+    @whoweare @accreditations @grid @grid @responsive
+    Scenario Outline: Verify Accreditations section content presence and partial copy
+        When the "accreditations" container is displayed
+        Then the <element_name> is visible and contains "<element_contains>"
+
+        Examples:
+            | element_name                | element_contains      |
+            | accreditations eyebrow text | OUR ACCREDITATIONS    |
+            | accreditations heading      | A great place to work |
+
+    @whoweare @accreditations @grid @responsive
+    Scenario Outline: Accreditations image grid renders and images load
+        When the <page> is viewed on a <device_type> device
+        When the <section> image grid is displayed
+        Then the <section> image grid has at least <min_items> items
+
+        Examples:
+            | page       | section        | device_type | min_items |
+            | who we are | accreditations | desktop     | 8         |
+            | who we are | accreditations | mobile      | 8         |
