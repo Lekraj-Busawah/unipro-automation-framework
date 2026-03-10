@@ -156,7 +156,7 @@ Feature: Who We Are page - Content rendering, responsiveness, and CTAs
     # ACCREDITATIONS SECTION
     # ---------------------------------------------------------------------------
 
-    @whoweare @accreditations @grid @grid @responsive
+    @whoweare @accreditations @grid @responsive
     Scenario Outline: Verify Accreditations section content presence and partial copy
         When the "accreditations" container is displayed
         Then the <element_name> is visible and contains "<element_contains>"
@@ -176,3 +176,31 @@ Feature: Who We Are page - Content rendering, responsiveness, and CTAs
             | page       | section        | device_type | min_items |
             | who we are | accreditations | desktop     | 8         |
             | who we are | accreditations | mobile      | 8         |
+
+    # ---------------------------------------------------------------------------
+    # TESTIMONIALS SECTION
+    # ---------------------------------------------------------------------------
+
+    @whoweare @testimonials @content
+    Scenario Outline: Verify Testimonials section content presence and partial copy
+        When the "testimonials" container is displayed
+        Then the <element_name> is visible and contains "<element_contains>"
+
+        Examples:
+            | element_name                  | element_contains                |
+            | testimonials eyebrow text     | TESTIMONIALS                    |
+            | testimonials heading          | unrivalled advantage            |
+            | testimonials intro text block | control and strategic advantage |
+
+    @whoweare @testimonials @grid @wip
+    Scenario Outline: Testimonials block renders cards with quotes
+        When the <page> is viewed on a <device_type> device
+        When the "testimonials grid" container is displayed
+        Then the "testimonials grid" has at least <min_items> items
+        And each testimonial card has non-empty quote text
+        And each testimonial card has at least one attribution field present (name or business)
+
+        Examples:
+            | page       | device_type | min_items |
+            | who we are | desktop     | 4         |
+            | who we are | mobile      | 4         |
