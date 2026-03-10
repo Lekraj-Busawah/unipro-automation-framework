@@ -55,6 +55,17 @@ class WhoWeAre(BasePage):
         "accreditations heading": (By.XPATH, "//div[@id='accreditations']//h2"),
         "accreditations image grid": (By.CSS_SELECTOR, "#accreditations div.image-grid-block__grid.four-columns > div"),
 
+        # Testimonials block
+        "testimonials": (By.CSS_SELECTOR, "div.link-quote-card-block.block.block--light-grey"),
+        "testimonials eyebrow text": (By.CSS_SELECTOR, "div.link-quote-card-block.block.block--light-grey .eyebrow"),
+        "testimonials heading": (By.CSS_SELECTOR, "div.link-quote-card-block.block.block--light-grey h2"),
+        "testimonials intro text block": (By.CSS_SELECTOR, "div.link-quote-card-block.block.block--light-grey .intro-feature-text"),
+        "testimonials grid": (By.CSS_SELECTOR, ".link-quote-card-block__cards"),
+        "testimonials grid items": (By.CSS_SELECTOR, ".link-quote-card-block__cards .quote-link-component.card"),
+        "testimonials copy": (By.CSS_SELECTOR, ".quote-link-component__copy p"),
+        "testimonials name": (By.CSS_SELECTOR, ".quote-link-component__name"),
+        "testimonials business": (By.CSS_SELECTOR, ".quote-link-component__business-name"),
+
     }
 
     # ---------------------------------------------------------------------------
