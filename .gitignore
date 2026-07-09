@@ -12,7 +12,7 @@ screenshots/
 *.log
 
 # IDE Settings
-.vscode/
+# .vscode/
 .idea/
 
 # OS generated
