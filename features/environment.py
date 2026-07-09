@@ -22,7 +22,9 @@ def before_scenario(context, scenario):
         if browser_name == 'chrome':
             options = webdriver.ChromeOptions()
             if headless_mode:
-                options.add_argument("--headless")
+                options.add_argument("--headless=new") 
+                options.add_argument("--window-position=-14000,-14000") 
+                options.add_argument("--disable-gpu")
                 options.add_argument("--no-sandbox")
                 options.add_argument("--disable-dev-shm-usage")
                 options.add_argument("--window-size=1920,1080")
