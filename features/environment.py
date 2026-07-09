@@ -9,7 +9,7 @@ import allure
 # Initialize the logger once
 logger = LogGen.loggen()
 
-def before_scenario(context, scenario):
+def before_feature(context, feature):
     try:
         # 1. Read the URL from Config
         context.base_url = ReadConfig.get_application_url()
@@ -50,10 +50,10 @@ def before_scenario(context, scenario):
             context.driver.maximize_window()
 
         context.driver.implicitly_wait(0) # Ensure no implicit wait
-        logger.info(f"**** Started Scenario: {scenario.name} ****")
+        logger.info(f"**** Started Feature: {feature.name} ****")
     
     except Exception as e:
-        logger.error(f"Failed to start scenario: {e}")
+        logger.error(f"Failed to start feature: {e}")
         assert False, f"Browser setup failed: {e}"
 
 
@@ -77,11 +77,11 @@ def after_step(context, step):
             except Exception as e:
                 logger.error(f"Failed to capture screenshot: {e}")
 
-def after_scenario(context, scenario):
+def after_feature(context, feature):
     # Close Browser
     if hasattr(context, 'driver'):
         try:
             context.driver.quit()
-            logger.info(f"**** Finished Scenario: {scenario.name} - Browser Closed ****")
+            logger.info(f"**** Finished Feature: {feature.name} - Browser Closed ****")
         except Exception:
             pass
