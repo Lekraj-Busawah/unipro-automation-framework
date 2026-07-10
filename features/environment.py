@@ -9,7 +9,7 @@ import allure
 # Initialize the logger once
 logger = LogGen.loggen()
 
-def before_scenario(context, scenario):
+def before_feature(context, feature):
     try:
         # 1. Read the URL from Config
         context.base_url = ReadConfig.get_application_url()
@@ -22,7 +22,9 @@ def before_scenario(context, scenario):
         if browser_name == 'chrome':
             options = webdriver.ChromeOptions()
             if headless_mode:
-                options.add_argument("--headless")
+                options.add_argument("--headless=new") 
+                options.add_argument("--window-position=-14000,-14000") 
+                options.add_argument("--disable-gpu")
                 options.add_argument("--no-sandbox")
                 options.add_argument("--disable-dev-shm-usage")
                 options.add_argument("--window-size=1920,1080")
@@ -48,10 +50,10 @@ def before_scenario(context, scenario):
             context.driver.maximize_window()
 
         context.driver.implicitly_wait(0) # Ensure no implicit wait
-        logger.info(f"**** Started Scenario: {scenario.name} ****")
+        logger.info(f"**** Started Feature: {feature.name} ****")
     
     except Exception as e:
-        logger.error(f"Failed to start scenario: {e}")
+        logger.error(f"Failed to start feature: {e}")
         assert False, f"Browser setup failed: {e}"
 
 
@@ -75,11 +77,11 @@ def after_step(context, step):
             except Exception as e:
                 logger.error(f"Failed to capture screenshot: {e}")
 
-def after_scenario(context, scenario):
+def after_feature(context, feature):
     # Close Browser
     if hasattr(context, 'driver'):
         try:
             context.driver.quit()
-            logger.info(f"**** Finished Scenario: {scenario.name} - Browser Closed ****")
+            logger.info(f"**** Finished Feature: {feature.name} - Browser Closed ****")
         except Exception:
             pass
