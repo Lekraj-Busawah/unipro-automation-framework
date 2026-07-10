@@ -192,7 +192,7 @@ Feature: Who We Are page - Content rendering, responsiveness, and CTAs
             | testimonials heading          | unrivalled advantage            |
             | testimonials intro text block | control and strategic advantage |
 
-    @whoweare @testimonials @grid @wip
+    @whoweare @testimonials @grid
     Scenario Outline: Testimonials block renders cards with quotes
         When the <page> is viewed on a <device_type> device
         When the "testimonials grid" container is displayed
@@ -204,3 +204,7 @@ Feature: Who We Are page - Content rendering, responsiveness, and CTAs
             | page       | device_type | min_items |
             | who we are | desktop     | 4         |
             | who we are | mobile      | 4         |
+
+    # ---------------------------------------------------------------------------
+    # CONTACT US SECTION
+    # ---------------------------------------------------------------------------
