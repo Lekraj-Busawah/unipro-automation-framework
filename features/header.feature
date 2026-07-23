@@ -31,7 +31,7 @@ Feature: Header navigation and branding
       | contact_us       | contact-us       |
       | careers          | careers          |
 
-  @mobile @wip
+  @mobile
   Scenario Outline: Header adapts to responsive breakpoints
     When the header is viewed on a <device_type> device
     Then the header layout should adjust to the <device_type> layout
