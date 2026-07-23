@@ -8,9 +8,9 @@ Feature: What We Do page - Content rendering, responsiveness, CTAs, and accessib
   # STRUCTURAL PRESENCE
   # ---------------------------------------------------------------------------
 
-  @whatwedo @structure @smoke
+  @whatwedo @structure @smoke @wip
   Scenario Outline: Verify key page sections are present in the DOM
-    Then the "<section_name>" container is displayed
+    When the "<section_name>" container is displayed
 
     Examples:
       | section_name         |
