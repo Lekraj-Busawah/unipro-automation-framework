@@ -1,9 +1,27 @@
-// {
-//     "cucumberautocomplete.steps": [
-//         "features/steps/**/*.py",
-//         "tests/**/*.py"
-//     ],
-//     "cucumberautocomplete.syncfeatures": "features/**/*.feature",
-//     "cucumberautocomplete.strictGherkinCompletion": true,
-//     "behaveTestRunner.enableStepDefinitionNavigation": false 
-// }
+{
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": "gherkin.grammar keyword.control",
+                "settings": {
+                    "foreground": "#C586C0",
+                    "fontStyle": "bold"
+                }
+            }
+        ],
+        "[*Light*]": {
+            "textMateRules": [
+                {
+                    "scope": "gherkin.grammar keyword.control",
+                    "settings": {
+                        "foreground": "#AF00DB",
+                        "fontStyle": "bold"
+                    }
+                }
+            ]
+        }
+    },
+    "[gherkin]": {
+        "editor.semanticHighlighting.enabled": false
+    }
+}
