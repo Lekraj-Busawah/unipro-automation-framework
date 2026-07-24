@@ -64,6 +64,10 @@ python run.py --tags=~@wip
 
 # Combine a feature file with a tag filter
 python run.py features/what_we_do.feature --tags=@smoke
+
+# Dry run - validates that every step has a matching step definition
+# without actually launching a browser or executing any steps
+python run.py --dry-run
 ```
 
 **Option B: Using Native Behave Commands**
@@ -78,6 +82,9 @@ behave features/homepage.feature
 
 # Run tests filtered by tag
 behave --tags=@smoke
+
+# Dry run - validates step definitions without executing anything
+behave --dry-run
 
 # Run tests and generate Allure report data
 behave -f allure_behave.formatter:AllureFormatter -o allure-results
