@@ -1,6 +1,5 @@
 Feature: Who We Are page - Content rendering, responsiveness, and CTAs
-    The "Who we are" page should render all key sections, support responsive imagery,
-    and provide working calls to action.
+    The "Who we are" page should render all key sections, support responsive imagery, and provide working calls to action.
 
     Background:
         Given the user navigates to "/who-we-are/"
