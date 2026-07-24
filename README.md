@@ -16,6 +16,16 @@ A scalable automated testing framework built with **Python**, **Behave (BDD)**, 
 ### 1. Prerequisites
 - Python 3.10+
 - Chrome Browser
+- Allure Commandline (only needed to generate/serve HTML reports locally). This is a separate Java-based CLI, distinct from the `allure-behave`/`allure-python-commons` pip packages, which only produce the raw `allure-results` data.
+  - Requires a Java Runtime (JRE 8+) on your `PATH`.
+  - Without admin rights: install via [Scoop](https://scoop.sh/) (no elevation needed):
+    ```powershell
+    irm get.scoop.sh | iex
+    scoop bucket add java
+    scoop install temurin21-jre allure
+    ```
+  - With admin rights: `winget install --id EclipseAdoptium.Temurin.21.JRE -e` then `npm install -g allure-commandline`, or see the official Allure install docs.
+  - After installing, restart your terminal (or VS Code) so the updated `PATH` is picked up, then verify with `allure --version`.
 
 ### 2. Installation
 ```bash
@@ -25,14 +35,35 @@ pip install -r requirements.txt
 ### 3. Running Tests
 
 **Option A: Using the Helper Script (Recommended)**
-This script runs the tests, automatically configures the Allure report output, and lets you view the results immediately.
+This script runs the tests, automatically configures the Allure report output, and lets you view the results immediately. Any arguments you pass are forwarded directly to `behave`, so all native Behave options (feature files, tags, scenario names, etc.) work here too.
 
 ```bash
 # Run all tests
 python run.py
 
-# Run specific scenarios (e.g., Mobile)
+# Run a specific feature file
+python run.py features/homepage.feature
+
+# Run multiple feature files
+python run.py features/homepage.feature features/footer.feature
+
+# Run a single scenario by name (matches the Scenario title)
+python run.py features/who_we_are.feature --name="Hero section renders on desktop"
+
+# Run scenarios with a specific tag
 python run.py --tags=@mobile
+
+# Run scenarios matching ANY of the tags (OR)
+python run.py --tags=@mobile,@desktop
+
+# Run scenarios matching ALL of the tags (AND)
+python run.py --tags=@smoke --tags=@whatwedo
+
+# Exclude a tag (NOT)
+python run.py --tags=~@wip
+
+# Combine a feature file with a tag filter
+python run.py features/what_we_do.feature --tags=@smoke
 ```
 
 **Option B: Using Native Behave Commands**
@@ -42,11 +73,30 @@ If you prefer running raw commands without the helper script:
 # Run tests (Console output only, no report file saved)
 behave
 
+# Run a specific feature file
+behave features/homepage.feature
+
+# Run tests filtered by tag
+behave --tags=@smoke
+
 # Run tests and generate Allure report data
 behave -f allure_behave.formatter:AllureFormatter -o allure-results
 
 # View the generated HTML report
 allure serve allure-results
+```
+
+### Available Tags
+Scenarios are tagged by feature area, page section, test type (e.g. `@smoke`, `@content`), and viewport (e.g. `@desktop`, `@mobile`). 
+
+### 4. Configuration
+Test settings live in [configurations/config.ini](configurations/config.ini):
+
+```ini
+[common info]
+baseURL = https://www.unipro.io/
+browser = chrome      # chrome | firefox
+headless = false      # true | false
 ```
 
 ## CI/CD & Reporting
