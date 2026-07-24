@@ -83,6 +83,12 @@ behave features/homepage.feature
 # Run tests filtered by tag
 behave --tags=@smoke
 
+# Run a single Scenario Outline Examples row by its line number
+behave features/what_we_do.feature:34
+
+# Run multiple specific rows
+behave features/what_we_do.feature:34 features/what_we_do.feature:35
+
 # Dry run - validates step definitions without executing anything
 behave --dry-run
 
