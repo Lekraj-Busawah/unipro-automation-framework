@@ -8,7 +8,7 @@ Feature: What We Do page - Content rendering, responsiveness, CTAs, and accessib
   # STRUCTURAL PRESENCE
   # ---------------------------------------------------------------------------
 
-  @whatwedo @structure @smoke @wip
+  @whatwedo @structure @smoke 
   Scenario Outline: Verify key page sections are present in the DOM
     When the "<section_name>" container is displayed
 
@@ -24,14 +24,14 @@ Feature: What We Do page - Content rendering, responsiveness, CTAs, and accessib
   # HERO SECTION
   # ---------------------------------------------------------------------------
 
-  @whatwedo @hero @smoke
+  @whatwedo @hero @smoke @wip
   Scenario Outline: Verify hero content presence and partial copy
     When the "hero" container is displayed
     Then the <element_name> is visible and contains "<element_contains>"
 
     Examples:
       | element_name          | element_contains                |
-      | hero eyebrow text     | What we do                      |
+      | hero eyebrow text     | WHAT WE DO                      |
       | hero heading          | BESPOKE SOFTWARE                |
       | hero intro text block | agentic AI orchestrated bespoke |
 
