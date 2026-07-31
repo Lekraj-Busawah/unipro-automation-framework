@@ -14,8 +14,8 @@ class BasePage:
 
     def __init__(self, driver):
         self.driver = driver
-        # Standard explicit wait time
-        self.wait_timeout = 10
+        # Standard explicit wait time (configurable via configurations/config.ini)
+        self.wait_timeout = ReadConfig.get_page_load_timeout()
         self.wait = WebDriverWait(self.driver, self.wait_timeout)
 
     base_url = ReadConfig.get_application_url()
@@ -28,9 +28,12 @@ class BasePage:
         self.driver.get(self.base_url)
         
         # Wait for the page to fully load
-        self.wait.until(
-            lambda driver: driver.execute_script("return document.readyState") == "complete"
-        )
+        try:
+            self.wait.until(
+                lambda driver: driver.execute_script("return document.readyState") == "complete"
+            )
+        except TimeoutException:
+            raise AssertionError(f"Page at {self.base_url} did not finish loading after {self.wait_timeout} seconds")
 
         self.handle_cookie_consent()
     
@@ -39,11 +42,15 @@ class BasePage:
         Navigates to a specific URL.
         Waits for the document ready state and handles cookie consent.
         """
-        self.driver.get(f"{self.base_url}{path}")
+        url = f"{self.base_url.rstrip('/')}/{path.lstrip('/')}"
+        self.driver.get(url)
 
-        self.wait.until(
-            lambda driver: driver.execute_script("return document.readyState") == "complete"
-        )
+        try:
+            self.wait.until(
+                lambda driver: driver.execute_script("return document.readyState") == "complete"
+            )
+        except TimeoutException:
+            raise AssertionError(f"Page at {url} did not finish loading after {self.wait_timeout} seconds")
 
         self.handle_cookie_consent()
 
