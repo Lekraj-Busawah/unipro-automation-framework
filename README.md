@@ -83,6 +83,10 @@ behave features/homepage.feature
 # Run tests filtered by tag
 behave --tags=@smoke
 
+# Run tests filtered by tag, hiding scenarios/steps that were skipped
+# (by default, behave still lists every non-matching scenario as "skipped")
+behave --tags=@smoke --no-skipped
+
 # Run a single Scenario Outline Examples row by its line number
 behave features/what_we_do.feature:34
 
