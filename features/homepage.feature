@@ -74,7 +74,7 @@ Feature: Homepage marketing content and layout
       | element_name       | expected_url                      |
       | why call to action | https://www.unipro.io/contact-us/ |
 
-  @homepage @why-section @reponsive
+  @homepage @why-section @responsive
   Scenario Outline: Responsive imagery for "why" content block
     When the <page> is viewed on a <device_type> device
     Then the <block_name> desktop image visibility is <desktop_image_visibility>
