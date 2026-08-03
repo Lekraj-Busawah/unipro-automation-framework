@@ -84,8 +84,11 @@ class BasePage:
         return self.wait.until(EC.presence_of_element_located(locator))
     
     def click_element(self, locator):
-        """Wait for element to be visible and click it."""
-        return self.wait.until(EC.element_to_be_clickable(locator)).click()
+        """Wait for element to be visible, scroll it into view and click it."""
+        element = self.wait.until(EC.element_to_be_clickable(locator))
+        self.driver.execute_script("arguments[0].scrollIntoView({block: 'center', inline: 'center'});", element)
+        element.click()
+        return element
     
     def enter_text(self, locator, text):
         """Wait for element, clears it, and types text."""
@@ -190,6 +193,19 @@ class BasePage:
             raise ValueError(f"No locator named '{locator}' found on {self.__class__.__name__}")
         
         return self.wait_for_visibility(locator)
+    
+    def get_element_at_position(self, locator_name, position):
+        """
+        Returns the raw WebElement for a locator whose XPath/selector
+        contains a '{position}' placeholder, formatted with the given position.
+        """
+        locator = self.locators.get(locator_name)
+        if not locator:
+            raise ValueError(f"No locator named '{locator_name}' found on {self.__class__.__name__}")
+        
+        by, selector = locator
+        formatted_locator = (by, selector.format(position=position))
+        return self.wait_for_visibility(formatted_locator)
     
     def get_elements(self, locator):
         """Return all web elements matching the given locator."""
