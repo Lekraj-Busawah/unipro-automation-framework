@@ -53,27 +53,6 @@ def step_impl(context, block_name):
     is_visible = context.current_page.is_element_displayed(block_name)
     assert is_visible is True, f"The {block_name} container was not visible on the page!"
 
-@then(u'the {element_name} is visible and contains "{element_contains}"')
-def step_impl(context, element_name, element_contains):
-    is_visible = context.current_page.is_element_displayed(element_name)
-    assert is_visible is True, f"The {element_name} container was not visible on the page!"
-    actual_text = context.current_page.get_element_text(element_name)
-    assert element_contains in actual_text, f"Expected text to contain '{element_contains}' but found {actual_text}"
-
-
-@then(u'the {element_name} navigates to "{expected_url}"')
-def step_impl(context, element_name, expected_url):
-    context.current_page.click_element(context.current_page.locators[element_name])
-
-    context.current_page.wait_for_url_to_be(expected_url)
-
-    actual_url = context.current_page.get_url()
-
-    assert actual_url == expected_url, f"Expected {expected_url} but got {actual_url}"
-
-    status = context.current_page.get_http_status(expected_url)
-    assert status == 200, f"Expected 200 but got {status}"
-
 
 @when(u'the {page} is viewed on a {device_type} device')
 def step_impl(context, page, device_type):

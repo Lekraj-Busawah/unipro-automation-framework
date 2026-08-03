@@ -10,8 +10,8 @@ class LogGen:
         if not logger.handlers:
             logger.setLevel(logging.INFO)
             
-            # File Handler
-            file_handler = logging.FileHandler("automation.log")
+            # File Handler - 'w' mode so each run starts with a clean log
+            file_handler = logging.FileHandler("automation.log", mode='w')
             formatter = logging.Formatter('%(asctime)s: %(levelname)s: %(message)s', 
                                           datefmt='%m/%d/%Y %I:%M:%S %p')
             file_handler.setFormatter(formatter)

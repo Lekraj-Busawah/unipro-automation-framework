@@ -57,8 +57,13 @@ def before_feature(context, feature):
         assert False, f"Browser setup failed: {e}"
 
 
+def before_scenario(context, scenario):
+    logger.info(f"---- Started Scenario: {scenario.name} ----")
+
+
 def after_step(context, step):
     if step.status != 'passed':
+        logger.error(f"Step FAILED: \"{step.name}\" ({step.status}) - {step.error_message}")
         if hasattr(context, 'driver'):
             try:
                 # Take the screenshot in memory
@@ -76,6 +81,11 @@ def after_step(context, step):
 
             except Exception as e:
                 logger.error(f"Failed to capture screenshot: {e}")
+
+
+def after_scenario(context, scenario):
+    logger.info(f"---- Finished Scenario: {scenario.name} - {scenario.status.name.upper()} ----")
+
 
 def after_feature(context, feature):
     # Close Browser

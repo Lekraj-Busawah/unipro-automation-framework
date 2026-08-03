@@ -14,8 +14,8 @@ class BasePage:
 
     def __init__(self, driver):
         self.driver = driver
-        # Standard explicit wait time
-        self.wait_timeout = 10
+        # Standard explicit wait time (configurable via configurations/config.ini)
+        self.wait_timeout = ReadConfig.get_page_load_timeout()
         self.wait = WebDriverWait(self.driver, self.wait_timeout)
 
     base_url = ReadConfig.get_application_url()
@@ -28,9 +28,12 @@ class BasePage:
         self.driver.get(self.base_url)
         
         # Wait for the page to fully load
-        self.wait.until(
-            lambda driver: driver.execute_script("return document.readyState") == "complete"
-        )
+        try:
+            self.wait.until(
+                lambda driver: driver.execute_script("return document.readyState") == "complete"
+            )
+        except TimeoutException:
+            raise AssertionError(f"Page at {self.base_url} did not finish loading after {self.wait_timeout} seconds")
 
         self.handle_cookie_consent()
     
@@ -39,11 +42,15 @@ class BasePage:
         Navigates to a specific URL.
         Waits for the document ready state and handles cookie consent.
         """
-        self.driver.get(f"{self.base_url}{path}")
+        url = f"{self.base_url.rstrip('/')}/{path.lstrip('/')}"
+        self.driver.get(url)
 
-        self.wait.until(
-            lambda driver: driver.execute_script("return document.readyState") == "complete"
-        )
+        try:
+            self.wait.until(
+                lambda driver: driver.execute_script("return document.readyState") == "complete"
+            )
+        except TimeoutException:
+            raise AssertionError(f"Page at {url} did not finish loading after {self.wait_timeout} seconds")
 
         self.handle_cookie_consent()
 
@@ -77,8 +84,11 @@ class BasePage:
         return self.wait.until(EC.presence_of_element_located(locator))
     
     def click_element(self, locator):
-        """Wait for element to be visible and click it."""
-        return self.wait.until(EC.element_to_be_clickable(locator)).click()
+        """Wait for element to be visible, scroll it into view and click it."""
+        element = self.wait.until(EC.element_to_be_clickable(locator))
+        self.driver.execute_script("arguments[0].scrollIntoView({block: 'center', inline: 'center'});", element)
+        element.click()
+        return element
     
     def enter_text(self, locator, text):
         """Wait for element, clears it, and types text."""
@@ -183,6 +193,19 @@ class BasePage:
             raise ValueError(f"No locator named '{locator}' found on {self.__class__.__name__}")
         
         return self.wait_for_visibility(locator)
+    
+    def get_element_at_position(self, locator_name, position):
+        """
+        Returns the raw WebElement for a locator whose XPath/selector
+        contains a '{position}' placeholder, formatted with the given position.
+        """
+        locator = self.locators.get(locator_name)
+        if not locator:
+            raise ValueError(f"No locator named '{locator_name}' found on {self.__class__.__name__}")
+        
+        by, selector = locator
+        formatted_locator = (by, selector.format(position=position))
+        return self.wait_for_visibility(formatted_locator)
     
     def get_elements(self, locator):
         """Return all web elements matching the given locator."""
