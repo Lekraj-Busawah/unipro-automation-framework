@@ -26,5 +26,13 @@ class WhoWeDoItFor(BasePage):
         "desktop hero image": (By.CSS_SELECTOR, ".hero-block__image.hide-mobile"),
         "mobile hero image": (By.CSS_SELECTOR, ".hero-block__image.hide-desktop"),
 
+        # Leaders section
+        "leaders eyebrow text": (By.XPATH, "//div[contains(@class, 'content-block')][.//p[normalize-space()='The Leaders We Partner With']]//p[contains(@class, 'eyebrow')]"),
+        "leaders heading": (By.XPATH, "//div[contains(@class, 'content-block')][.//p[normalize-space()='The Leaders We Partner With']]//h2"),
+        "leaders intro text block": (By.XPATH, "//div[contains(@class, 'content-block')][.//p[normalize-space()='The Leaders We Partner With']]//div[contains(@class, 'intro-feature-text')]"),
+        "leaders desktop image": (By.XPATH, "//div[contains(@class, 'content-block')][.//p[normalize-space()='The Leaders We Partner With']]//img[contains(@class, 'hide-mobile')]"),
+        "leaders mobile image": (By.XPATH, "//div[contains(@class, 'content-block')][.//p[normalize-space()='The Leaders We Partner With']]//img[contains(@class, 'hide-desktop')]"),
+
+
 
     }
