@@ -33,6 +33,14 @@ class WhoWeDoItFor(BasePage):
         "leaders desktop image": (By.XPATH, "//div[contains(@class, 'content-block')][.//p[normalize-space()='The Leaders We Partner With']]//img[contains(@class, 'hide-mobile')]"),
         "leaders mobile image": (By.XPATH, "//div[contains(@class, 'content-block')][.//p[normalize-space()='The Leaders We Partner With']]//img[contains(@class, 'hide-desktop')]"),
 
+        # Enterprise challenges section
+        "enterprise challenges eyebrow text": (By.XPATH, "//div[contains(@class, 'content-block')][.//p[normalize-space()='The Enterprise Challenges We Solve']]//p[contains(@class, 'eyebrow')]"),
+        "enterprise challenges heading": (By.XPATH, "//div[contains(@class, 'content-block')][.//p[normalize-space()='The Enterprise Challenges We Solve']]//h2"),
+        "enterprise challenges intro text block": (By.XPATH, "//div[contains(@class, 'content-block')][.//p[normalize-space()='The Enterprise Challenges We Solve']]//div[contains(@class, 'intro-feature-text')]"),
+        "enterprise challenges list": (By.XPATH, "//div[contains(@class, 'content-block')][.//p[normalize-space()='The Enterprise Challenges We Solve']]//div[contains(@class, 'intro-feature-text')]//ul/li"),
+        "enterprise challenges list item": (By.XPATH, "(//div[contains(@class, 'content-block')][.//p[normalize-space()='The Enterprise Challenges We Solve']]//div[contains(@class, 'intro-feature-text')]//ul/li)[{position}]"),
+        "enterprise challenges desktop image": (By.XPATH, "//div[contains(@class, 'content-block')][.//p[normalize-space()='The Enterprise Challenges We Solve']]//img[contains(@class, 'hide-mobile')]"),
+        "enterprise challenges mobile image": (By.XPATH, "//div[contains(@class, 'content-block')][.//p[normalize-space()='The Enterprise Challenges We Solve']]//img[contains(@class, 'hide-desktop')]"),
 
 
     }
