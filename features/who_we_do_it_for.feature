@@ -10,7 +10,7 @@ Feature: Who We Do It For page - Content rendering and responsiveness
   # STRUCTURAL PRESENCE
   # ---------------------------------------------------------------------------
 
-  @whowedoitfor @structure @smoke
+  @whowedoitfor @structure @smoke 
   Scenario Outline: Verify key page sections are present in the DOM
     Then the "<section_name>" container should exist
 
@@ -35,7 +35,7 @@ Feature: Who We Do It For page - Content rendering and responsiveness
 
     Examples:
       | element_name          | element_contains                |
-      | hero eyebrow text     | Who we do it for                |
+      | hero eyebrow text     | WHO WE DO IT FOR                |
       | hero heading          | BESPOKE SOFTWARE                |
       | hero intro text block | Challenge-Defined Partnership   |
 
