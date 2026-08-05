@@ -87,7 +87,7 @@ Feature: Who We Do It For page - Content rendering and responsiveness
 
     Examples:
       | element_name                           | element_contains                  |
-      | enterprise challenges eyebrow text     | Enterprise Challenges             |
+      | enterprise challenges eyebrow text     | ENTERPRISE CHALLENGES             |
       | enterprise challenges heading          | True Cost of Compromise           |
       | enterprise challenges intro text block | off the shelf                     |
 
