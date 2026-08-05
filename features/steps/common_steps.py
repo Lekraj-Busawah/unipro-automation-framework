@@ -2,6 +2,7 @@ from behave import *
 from pages.homepage import Homepage
 from pages.who_we_are import WhoWeAre
 from pages.what_we_do import WhatWeDo
+from pages.who_we_do_it_for import WhoWeDoItFor
 
 # ---------------------------------------------------------------------------
 # SHARED NAVIGATION STEPS
@@ -9,9 +10,10 @@ from pages.what_we_do import WhatWeDo
 
 # Maps URL path to Page Object
 PAGE_REGISTRY = {
+    "/": Homepage,
     "/who-we-are/": WhoWeAre,
     "/what-we-do/": WhatWeDo,
-    "/": Homepage,
+    "/who-we-do-it-for/": WhoWeDoItFor,
 }
 
 @given(u'the user navigates to "{path}"')
