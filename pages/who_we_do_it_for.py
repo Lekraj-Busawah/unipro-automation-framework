@@ -42,5 +42,32 @@ class WhoWeDoItFor(BasePage):
         "enterprise challenges desktop image": (By.XPATH, "//div[contains(@class, 'content-block')][.//p[normalize-space()='The Enterprise Challenges We Solve']]//img[contains(@class, 'hide-mobile')]"),
         "enterprise challenges mobile image": (By.XPATH, "//div[contains(@class, 'content-block')][.//p[normalize-space()='The Enterprise Challenges We Solve']]//img[contains(@class, 'hide-desktop')]"),
 
+        # Client experience section
+        "client experience eyebrow text": (By.XPATH, "//div[contains(@class, 'image-grid-block')][.//p[normalize-space()='Our Experience']]//p[contains(@class, 'eyebrow')]"),
+        "client experience heading": (By.XPATH, "//div[contains(@class, 'image-grid-block')][.//p[normalize-space()='Our Experience']]//h2"),
+        "client experience intro text block": (By.XPATH, "//div[contains(@class, 'image-grid-block')][.//p[normalize-space()='Our Experience']]//div[contains(@class, 'intro-feature-text')]"),
+        "client experience image grid": (By.XPATH, "//div[contains(@class, 'image-grid-block')][.//p[normalize-space()='Our Experience']]//div[contains(@class, 'image-grid-block__grid')]"),
+        "client tile": (By.XPATH, "//div[contains(@class, 'image-grid-block')][.//p[normalize-space()='Our Experience']]//div[contains(@class, 'image-grid-block__grid-single')]"),
+        "client desktop images": (By.XPATH, "//div[contains(@class, 'image-grid-block')][.//p[normalize-space()='Our Experience']]//img[contains(@class, 'hide-mobile')]"),
+        "client mobile images": (By.XPATH, "//div[contains(@class, 'image-grid-block')][.//p[normalize-space()='Our Experience']]//img[contains(@class, 'hide-desktop')]"),
 
     }
+
+    # ---------------------------------------------------------------------------
+    # ACTIONS
+    # ---------------------------------------------------------------------------
+     
+    def get_number_tiles(self):
+        return len(self.get_client_tiles())
+
+    def get_client_tiles(self):
+        return self.get_elements("client tile")
+
+    def get_tile_at_position(self, tile_position):
+        return self.get_client_tiles()[int(tile_position) - 1]
+
+    def get_desktop_image_from_tile(self, tile):
+        return tile.find_element(By.CSS_SELECTOR, "img.hide-mobile")
+
+    def get_mobile_image_from_tile(self, tile):
+        return tile.find_element(By.CSS_SELECTOR, "img.hide-desktop")
