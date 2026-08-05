@@ -19,6 +19,12 @@ class WhoWeDoItFor(BasePage):
         "strategic advantage": (By.XPATH, "//div[contains(@class, 'content-block')][.//p[normalize-space()='The Strategic Advantage We Deliver']]"),
         "final cta": (By.CSS_SELECTOR, ".cta-block.cta-block--cta-side-block"),
 
+        # Hero section
+        "hero eyebrow text": (By.CSS_SELECTOR, ".hero-block .typography > .eyebrow"),
+        "hero heading": (By.CSS_SELECTOR, ".hero-block .typography > h1"),
+        "hero intro text block": (By.CSS_SELECTOR, ".hero-block .intro-feature-text"),
+        "desktop hero image": (By.CSS_SELECTOR, ".hero-block__image.hide-mobile"),
+        "mobile hero image": (By.CSS_SELECTOR, ".hero-block__image.hide-desktop"),
 
-        
+
     }
