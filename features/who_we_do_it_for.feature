@@ -10,7 +10,7 @@ Feature: Who We Do It For page - Content rendering and responsiveness
   # STRUCTURAL PRESENCE
   # ---------------------------------------------------------------------------
 
-  @structure @smoke
+  @whowedoitfor @structure @smoke
   Scenario Outline: Verify key page sections are present in the DOM
     Then the "<section_name>" container should exist
 
@@ -28,7 +28,7 @@ Feature: Who We Do It For page - Content rendering and responsiveness
   # HERO SECTION
   # ---------------------------------------------------------------------------
 
-  @hero @content @smoke
+  @whowedoitfor @hero @content @smoke
   Scenario Outline: Verify hero content presence and partial copy
     When the "hero" container is displayed
     Then the <element_name> is visible and contains "<element_contains>"
@@ -39,7 +39,7 @@ Feature: Who We Do It For page - Content rendering and responsiveness
       | hero heading          | BESPOKE SOFTWARE                |
       | hero intro text block | Challenge-Defined Partnership   |
 
-  @hero @responsive
+  @whowedoitfor @hero @responsive
   Scenario Outline: Verify hero image visibility by breakpoint
     When the <page> is viewed on a <device_type> device
     Then the "<desktop_image>" visibility should be <desktop_visibility>
@@ -54,7 +54,7 @@ Feature: Who We Do It For page - Content rendering and responsiveness
   # LEADERS SECTION
   # ---------------------------------------------------------------------------
 
-  @leaders @content
+  @whowedoitfor @leaders @content
   Scenario Outline: Verify leaders section content presence and partial copy
     When the "leaders" container is displayed
     Then the <element_name> is visible and contains "<element_contains>"
@@ -65,7 +65,7 @@ Feature: Who We Do It For page - Content rendering and responsiveness
       | leaders heading          | Digital Accountability        |
       | leaders intro text block | Senior Executive              |
 
-  @leaders @responsive
+  @whowedoitfor @leaders @responsive
   Scenario Outline: Verify leaders image visibility by breakpoint
     When the <page> is viewed on a <device_type> device
     Then the <block_name> desktop image visibility is <desktop_visibility>
@@ -80,7 +80,7 @@ Feature: Who We Do It For page - Content rendering and responsiveness
   # ENTERPRISE CHALLENGES SECTION
   # ---------------------------------------------------------------------------
 
-  @enterprisechallenges @content
+  @whowedoitfor @enterprisechallenges @content
   Scenario Outline: Verify enterprise challenges section content presence and partial copy
     When the "enterprise challenges" container is displayed
     Then the <element_name> is visible and contains "<element_contains>"
@@ -91,7 +91,7 @@ Feature: Who We Do It For page - Content rendering and responsiveness
       | enterprise challenges heading          | True Cost of Compromise           |
       | enterprise challenges intro text block | off the shelf                     |
 
-  @enterprisechallenges @list
+  @whowedoitfor @enterprisechallenges @list
   Scenario Outline: Enterprise challenges list has the expected items
     When the "enterprise challenges" container is displayed
     Then the "enterprise challenges" list has exactly "<expected_count>" items
@@ -105,7 +105,7 @@ Feature: Who We Do It For page - Content rendering and responsiveness
       | 4              | 3     | Hidden Costs of Compromise         | vendor lock-in        |
       | 4              | 4     | The Demand for ROI                 | return on investment  |
 
-  @enterprisechallenges @responsive
+  @whowedoitfor @enterprisechallenges @responsive
   Scenario Outline: Verify enterprise challenges image visibility by breakpoint
     When the <page> is viewed on a <device_type> device
     Then the <block_name> desktop image visibility is <desktop_visibility>
@@ -120,7 +120,7 @@ Feature: Who We Do It For page - Content rendering and responsiveness
   # CLIENT EXPERIENCE GRID
   # ---------------------------------------------------------------------------
 
-  @clientexperience @content
+  @whowedoitfor @clientexperience @content
   Scenario Outline: Verify client experience content presence and partial copy
     When the "client experience" container is displayed
     Then the <element_name> is visible and contains "<element_contains>"
@@ -131,7 +131,7 @@ Feature: Who We Do It For page - Content rendering and responsiveness
       | client experience heading          | Trusted by the Enterprise |
       | client experience intro text block | recognised                |
 
-  @clientexperience @grid
+  @whowedoitfor @clientexperience @grid
   Scenario Outline: Client experience grid renders the expected number of brand tiles
     When the "client experience" container is displayed
     Then the "client experience" image grid has exactly "<expected_count>" items
@@ -141,7 +141,7 @@ Feature: Who We Do It For page - Content rendering and responsiveness
       | expected_count |
       | 12             |
 
-  @clientexperience @responsive
+  @whowedoitfor @clientexperience @responsive
   Scenario Outline: Client image variants are visible at the correct breakpoint
     When the <page> is viewed on a <device_type> device
     Then each client tile desktop image visibility is <desktop_visibility>
@@ -156,7 +156,7 @@ Feature: Who We Do It For page - Content rendering and responsiveness
   # SECTOR EXPERTISE SECTION
   # ---------------------------------------------------------------------------
 
-  @sectorexpertise @content
+  @whowedoitfor @sectorexpertise @content
   Scenario Outline: Verify sector expertise content presence and partial copy
     When the "sector expertise" container is displayed
     Then the <element_name> is visible and contains "<element_contains>"
@@ -167,7 +167,7 @@ Feature: Who We Do It For page - Content rendering and responsiveness
       | sector expertise heading         | Sector-Agnostic Expertise      |
       | sector expertise intro text block| complexity                     |
 
-  @sectorexpertise @grid
+  @whowedoitfor @sectorexpertise @grid
   Scenario Outline: Sector expertise list renders numbered sector titles
     When the "sector expertise" container is displayed
     Then the "sector expertise" list has exactly "<expected_count>" items
@@ -189,7 +189,7 @@ Feature: Who We Do It For page - Content rendering and responsiveness
   # STRATEGIC ADVANTAGE SECTION
   # ---------------------------------------------------------------------------
 
-  @strategicadvantage @content
+  @whowedoitfor @strategicadvantage @content
   Scenario Outline: Verify strategic advantage content presence and partial copy
     When the "strategic advantage" container is displayed
     Then the <element_name> is visible and contains "<element_contains>"
@@ -200,7 +200,7 @@ Feature: Who We Do It For page - Content rendering and responsiveness
       | strategic advantage heading          | Digital Autonomy    |
       | strategic advantage intro text block | precisely tailored  |
 
-  @strategicadvantage @list
+  @whowedoitfor @strategicadvantage @list
   Scenario Outline: Strategic advantage list has the expected benefits
     When the "strategic advantage" container is displayed
     Then the "strategic advantage" list has exactly "<expected_count>" items
@@ -213,7 +213,7 @@ Feature: Who We Do It For page - Content rendering and responsiveness
       | 3              | 2     | Operational Efficiency      | license fees      |
       | 3              | 3     | Future-Proof Adaptability   | evolving business |
 
-  @strategicadvantage @responsive
+  @whowedoitfor @strategicadvantage @responsive
   Scenario Outline: Verify strategic advantage image visibility by breakpoint
     When the <page> is viewed on a <device_type> device
     Then the <block_name> desktop image visibility is <desktop_visibility>
@@ -228,7 +228,7 @@ Feature: Who We Do It For page - Content rendering and responsiveness
   # FINAL CTA
   # ---------------------------------------------------------------------------
 
-  @finalcta @content @smoke
+  @whowedoitfor @finalcta @content @smoke
   Scenario Outline: Verify final CTA content presence and partial copy
     When the "final cta" container is displayed
     Then the <element_name> is visible and contains "<element_contains>"
@@ -239,7 +239,7 @@ Feature: Who We Do It For page - Content rendering and responsiveness
       | final cta heading         | conversation               |
       | final cta intro text block| No pressure                |
 
-  @finalcta @cta
+  @whowedoitfor @finalcta @cta
   Scenario Outline: Final CTA provides a working Contact Us call to action
     When the "final cta" container is displayed
     Then the <element_name> is visible and contains "<expected_label>"
