@@ -61,7 +61,7 @@ Feature: Who We Do It For page - Content rendering and responsiveness
 
     Examples:
       | element_name             | element_contains              |
-      | leaders eyebrow text     | The Leaders We Partner With   |
+      | leaders eyebrow text     | THE LEADERS WE PARTNER WITH   |
       | leaders heading          | Digital Accountability        |
       | leaders intro text block | Senior Executive              |
 
