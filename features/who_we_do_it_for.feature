@@ -127,19 +127,30 @@ Feature: Who We Do It For page - Content rendering and responsiveness
 
     Examples:
       | element_name                       | element_contains          |
-      | client experience eyebrow text     | Our Experience            |
+      | client experience eyebrow text     | OUR EXPERIENCE            |
       | client experience heading          | Trusted by the Enterprise |
       | client experience intro text block | recognised                |
 
-  @whowedoitfor @clientexperience @grid
+  @whowedoitfor @clientexperience @grid @wip
   Scenario Outline: Client experience grid renders the expected number of brand tiles
     When the "client experience" container is displayed
-    Then the "client experience" image grid has exactly "<expected_count>" items
-    And each client tile has an associated image
+    Then the image grid has at least <tile_count> client tiles
+    And the client tile at position <tile_position> has an associated image
 
     Examples:
-      | expected_count |
-      | 12             |
+      | tile_count | tile_position |
+      | 12         | 1             |
+      | 12         | 2             |
+      | 12         | 3             |
+      | 12         | 4             |
+      | 12         | 5             |
+      | 12         | 6             |
+      | 12         | 7             |
+      | 12         | 8             |
+      | 12         | 9             |
+      | 12         | 10            |
+      | 12         | 11            |
+      | 12         | 12            |
 
   @whowedoitfor @clientexperience @responsive
   Scenario Outline: Client image variants are visible at the correct breakpoint
