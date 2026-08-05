@@ -99,13 +99,15 @@ def step_impl(context, element_name):
 @then(u'the image grid has at least {tile_count} client tiles')
 def step_impl(context, tile_count):
     count = context.current_page.get_number_tiles()
-    assert count == int(tile_count), f"Expected at least {tile_count} client tiles, but found {count}"
+    assert count >= int(tile_count), f"Expected at least {tile_count} client tiles, but found {count}"
 
 @then(u'the client tile at position {tile_position} has an associated image')
 def step_impl(context, tile_position):
     tile = context.current_page.get_tile_at_position(tile_position)
     desktop_img = context.current_page.get_desktop_image_from_tile(tile)
+    mobile_img = context.current_page.get_mobile_image_from_tile(tile)
     assert desktop_img.get_attribute("src"), f"Tile {tile_position} desktop image has no src"
+    assert mobile_img.get_attribute("src"), f"Tile {tile_position} mobile image has no src"
 
 
 @then(u'the client tile at position {tile_position} link presence is {link_presence}')
