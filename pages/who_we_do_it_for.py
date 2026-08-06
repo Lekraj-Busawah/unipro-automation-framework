@@ -68,7 +68,11 @@ class WhoWeDoItFor(BasePage):
         "strategic advantage desktop image": (By.XPATH, "//div[contains(@class, 'content-block')][.//p[normalize-space()='The Strategic Advantage We Deliver']]//img[contains(@class, 'hide-mobile')]"),
         "strategic advantage mobile image": (By.XPATH, "//div[contains(@class, 'content-block')][.//p[normalize-space()='The Strategic Advantage We Deliver']]//img[contains(@class, 'hide-desktop')]"),
 
-
+        # Final CTA
+        "final cta eyebrow text": (By.CSS_SELECTOR, ".cta-block .eyebrow"),
+        "final cta heading": (By.CSS_SELECTOR, ".cta-block h2"),
+        "final cta intro text block": (By.CSS_SELECTOR, ".cta-block .intro-feature-text"),
+        "final cta contact CTA": (By.CSS_SELECTOR, '.cta-block a.button[href="https://www.unipro.io/contact-us/"]'),
     }
 
     # ---------------------------------------------------------------------------
