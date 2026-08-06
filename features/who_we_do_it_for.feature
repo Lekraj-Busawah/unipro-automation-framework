@@ -207,7 +207,7 @@ Feature: Who We Do It For page - Content rendering and responsiveness
 
     Examples:
       | element_name                         | element_contains    |
-      | strategic advantage eyebrow text     | Strategic Advantage |
+      | strategic advantage eyebrow text     | STRATEGIC ADVANTAGE |
       | strategic advantage heading          | Digital Autonomy    |
       | strategic advantage intro text block | precisely tailored  |
 
