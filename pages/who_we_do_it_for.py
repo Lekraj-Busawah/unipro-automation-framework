@@ -56,7 +56,8 @@ class WhoWeDoItFor(BasePage):
         "sector expertise heading": (By.XPATH, "//div[contains(@class, 'text-grid-block')][.//h2[contains(normalize-space(), 'Sector-Agnostic Expertise')]]//h2"),
         "sector expertise intro text block": (By.XPATH, "//div[contains(@class, 'text-grid-block')][.//h2[contains(normalize-space(), 'Sector-Agnostic Expertise')]]//div[contains(@class, 'intro-feature-text')]"),
         "sector expertise list": (By.XPATH, "//div[contains(@class, 'text-grid-block')][.//h2[contains(normalize-space(), 'Sector-Agnostic Expertise')]]//div[@class='text-grid-block__item']"),
-        
+        "sector expertise list item": (By.XPATH, "(//div[contains(@class, 'text-grid-block')][.//h2[contains(normalize-space(), 'Sector-Agnostic Expertise')]]//div[@class='text-grid-block__item'])[{position}]"),
+        "sector expertise list number": (By.XPATH, "//div[contains(@class, 'text-grid-block')][.//h2[contains(normalize-space(), 'Sector-Agnostic Expertise')]]//div[@class='text-grid-block__item']//h3"),
     }
 
     # ---------------------------------------------------------------------------
@@ -77,3 +78,6 @@ class WhoWeDoItFor(BasePage):
 
     def get_mobile_image_from_tile(self, tile):
         return tile.find_element(By.CSS_SELECTOR, "img.hide-desktop")
+     
+    def get_section_list_item_at_position(self, locator, tile_position):
+        return self.get_elements(locator)[int(tile_position) - 1]
