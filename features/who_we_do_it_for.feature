@@ -178,7 +178,7 @@ Feature: Who We Do It For page - Content rendering and responsiveness
       | sector expertise heading         | Sector-Agnostic Expertise      |
       | sector expertise intro text block| complexity                     |
 
-  @whowedoitfor @sectorexpertise @grid @wip
+  @whowedoitfor @sectorexpertise @grid
   Scenario Outline: Sector expertise list renders numbered sector titles
     When the "sector expertise" container is displayed
     Then the "sector expertise" list has exactly "<expected_count>" items
