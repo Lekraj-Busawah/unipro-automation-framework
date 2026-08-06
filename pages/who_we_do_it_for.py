@@ -58,6 +58,17 @@ class WhoWeDoItFor(BasePage):
         "sector expertise list": (By.XPATH, "//div[contains(@class, 'text-grid-block')][.//h2[contains(normalize-space(), 'Sector-Agnostic Expertise')]]//div[@class='text-grid-block__item']"),
         "sector expertise list item": (By.XPATH, "(//div[contains(@class, 'text-grid-block')][.//h2[contains(normalize-space(), 'Sector-Agnostic Expertise')]]//div[@class='text-grid-block__item'])[{position}]"),
         "sector expertise list number": (By.XPATH, "//div[contains(@class, 'text-grid-block')][.//h2[contains(normalize-space(), 'Sector-Agnostic Expertise')]]//div[@class='text-grid-block__item']//h3"),
+
+        # Strategic advantage section
+        "strategic advantage eyebrow text": (By.XPATH, "//div[contains(@class, 'content-block')][.//p[normalize-space()='The Strategic Advantage We Deliver']]//p[contains(@class, 'eyebrow')]"),
+        "strategic advantage heading": (By.XPATH, "//div[contains(@class, 'content-block')][.//p[normalize-space()='The Strategic Advantage We Deliver']]//h2"),
+        "strategic advantage intro text block": (By.XPATH, "//div[contains(@class, 'content-block')][.//p[normalize-space()='The Strategic Advantage We Deliver']]//div[contains(@class, 'intro-feature-text')]"),
+        "strategic advantage list": (By.XPATH, "//div[contains(@class, 'content-block')][.//p[normalize-space()='The Strategic Advantage We Deliver']]//div[contains(@class, 'intro-feature-text')]//ul/li"),
+        "strategic advantage list item": (By.XPATH, "(//div[contains(@class, 'content-block')][.//p[normalize-space()='The Strategic Advantage We Deliver']]//div[contains(@class, 'intro-feature-text')]//ul/li)[{position}]"),
+        "strategic advantage desktop image": (By.XPATH, "//div[contains(@class, 'content-block')][.//p[normalize-space()='The Strategic Advantage We Deliver']]//img[contains(@class, 'hide-mobile')]"),
+        "strategic advantage mobile image": (By.XPATH, "//div[contains(@class, 'content-block')][.//p[normalize-space()='The Strategic Advantage We Deliver']]//img[contains(@class, 'hide-desktop')]"),
+
+
     }
 
     # ---------------------------------------------------------------------------
