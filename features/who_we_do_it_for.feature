@@ -182,8 +182,8 @@ Feature: Who We Do It For page - Content rendering and responsiveness
   Scenario Outline: Sector expertise list renders numbered sector titles
     When the "sector expertise" container is displayed
     Then the "sector expertise" list has exactly "<expected_count>" items
-    # And the "sector expertise" list item at position "<index>" has number "<number>"
-    # And the "sector expertise" list item at position "<index>" has title "<title>"
+    And the "sector expertise" list item at position "<index>" has number "<number>"
+    And the "sector expertise" list item at position "<index>" has title "<title>"
 
     Examples:
       | expected_count | index | number | title             |
