@@ -246,7 +246,7 @@ Feature: Who We Do It For page - Content rendering and responsiveness
 
     Examples:
       | element_name              | element_contains           |
-      | final cta eyebrow text    | Take Control               |
+      | final cta eyebrow text    | TAKE CONTROL               |
       | final cta heading         | conversation               |
       | final cta intro text block| No pressure                |
 
