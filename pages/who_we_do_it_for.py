@@ -51,6 +51,12 @@ class WhoWeDoItFor(BasePage):
         "client desktop images": (By.XPATH, "//div[contains(@class, 'image-grid-block')][.//p[normalize-space()='Our Experience']]//img[contains(@class, 'hide-mobile')]"),
         "client mobile images": (By.XPATH, "//div[contains(@class, 'image-grid-block')][.//p[normalize-space()='Our Experience']]//img[contains(@class, 'hide-desktop')]"),
 
+        # Sector expertise section
+        "sector expertise eyebrow text": (By.XPATH, "//div[contains(@class, 'text-grid-block')][.//h2[contains(normalize-space(), 'Sector-Agnostic Expertise')]]//p[contains(@class, 'eyebrow')]"),
+        "sector expertise heading": (By.XPATH, "//div[contains(@class, 'text-grid-block')][.//h2[contains(normalize-space(), 'Sector-Agnostic Expertise')]]//h2"),
+        "sector expertise intro text block": (By.XPATH, "//div[contains(@class, 'text-grid-block')][.//h2[contains(normalize-space(), 'Sector-Agnostic Expertise')]]//div[contains(@class, 'intro-feature-text')]"),
+        "sector expertise list": (By.XPATH, "//div[contains(@class, 'text-grid-block')][.//h2[contains(normalize-space(), 'Sector-Agnostic Expertise')]]//div[@class='text-grid-block__item']"),
+        
     }
 
     # ---------------------------------------------------------------------------
