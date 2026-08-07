@@ -17,4 +17,10 @@ class Blogs(BasePage):
         "topics": (By.XPATH, "(//div[contains(@class, 'archive-page__content')]//*[contains(@class, 'typography')])[2]"),
         "blog card grid": (By.CSS_SELECTOR, ".archive-page__cards"),
         "final cta": (By.CSS_SELECTOR, ".cta-block"),
+
+        # Hero section
+        "hero heading": (By.CSS_SELECTOR, ".hero-block .typography h1"),
+        "hero intro text": (By.CSS_SELECTOR, ".hero-block .intro-feature-text p"),
+        "hero desktop image": (By.CSS_SELECTOR, ".hero-block__image.hide-mobile"),
+        "hero mobile image": (By.CSS_SELECTOR, ".hero-block__image.hide-desktop"),
     }
