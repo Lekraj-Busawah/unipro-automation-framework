@@ -28,4 +28,11 @@ class Blogs(BasePage):
         "breadcrumb home link": (By.CSS_SELECTOR, ".breadcrumbs .item-home a.bread-link"),
         "breadcrumb current page label": (By.CSS_SELECTOR, ".breadcrumbs .item-current .bread-current"),
         "sub menu bar contact us cta": (By.CSS_SELECTOR, ".sub-menu-bar-block__links a.primary-button"),
+
+        # Featured post
+        "featured post heading": (By.CSS_SELECTOR, ".feature-block__typography h2"),
+        "featured post cta": (By.CSS_SELECTOR, ".feature-block__typography a.primary-button"),
+        "featured post type label": (By.CSS_SELECTOR, ".feature-block .post-icon p"),
+        "featured post image": (By.CSS_SELECTOR, ".feature-block__image img"),
+
     }
