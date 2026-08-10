@@ -70,3 +70,17 @@ Feature: Blogs page - Content rendering, search and responsiveness
     Examples:
       | cta_text     | expected_url                          |
       | Contact Us   | https://www.unipro.io/contact-us/     |
+
+  # ---------------------------------------------------------------------------
+  # FEATURED POST
+  # ---------------------------------------------------------------------------
+
+  @blogs @featuredpost @content
+  Scenario Outline: Verify featured post presence and partial copy
+    When the "featured post" container is displayed
+    Then the <element_name> is visible and contains "<element_contains>"
+
+    Examples:
+      | element_name             | element_contains  |
+      | featured post heading    | Beyond Automation |
+      | featured post type label | POST              |
