@@ -84,3 +84,12 @@ Feature: Blogs page - Content rendering, search and responsiveness
       | element_name             | element_contains  |
       | featured post heading    | Beyond Automation |
       | featured post type label | POST              |
+  
+  @blogs @featuredpost @cta @smoke
+  Scenario Outline: Featured post CTA links to the latest article
+    Then the featured post cta is visible and contains "<cta_text>"
+    # And the <element_name> navigates to "<expected_url>"
+
+    Examples:
+      | cta_text     | element_name      | expected_url                                      |
+      | Learn More   | featured post cta | https://www.unipro.io/insights/beyond-automation/ |
