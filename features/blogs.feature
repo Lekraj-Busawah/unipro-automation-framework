@@ -88,8 +88,22 @@ Feature: Blogs page - Content rendering, search and responsiveness
   @blogs @featuredpost @cta @smoke
   Scenario Outline: Featured post CTA links to the latest article
     Then the featured post cta is visible and contains "<cta_text>"
-    # And the <element_name> navigates to "<expected_url>"
+    And the <element_name> navigates to "<expected_url>"
 
     Examples:
-      | cta_text     | element_name      | expected_url                                      |
-      | Learn More   | featured post cta | https://www.unipro.io/insights/beyond-automation/ |
+      | cta_text     | element_name      | expected_url                                                                                  |
+      | Learn More   | featured post cta | https://www.unipro.io/insights/beyond-automation-why-agentic-ai-is-the-next-competitive-edge/ |
+
+  # ---------------------------------------------------------------------------
+  # SEARCH
+  # ---------------------------------------------------------------------------
+
+  @blogs @search @cta @wip
+  Scenario Outline: Submitting a search term navigates to the filtered results
+    When the "search bar" container is displayed
+    And the user searches the blogs for "<search_term>"
+    Then the browser navigates to a URL containing "<expected_query_param>"
+
+    Examples:
+      | search_term | expected_query_param |
+      | low-code    | blog=low-code        |
