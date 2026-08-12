@@ -211,6 +211,19 @@ class BasePage:
         formatted_locator = (by, selector.format(position=position))
         return self.wait_for_visibility(formatted_locator)
     
+    def click_element_at_position(self, locator_name, position):
+        """
+        Clicks the element for a locator whose XPath/selector
+        contains a '{position}' placeholder
+        """
+        locator = self.locators.get(locator_name)
+        if not locator:
+            raise ValueError(f"No locator named '{locator_name}' found on {self.__class__.__name__}")
+        
+        by, selector = locator
+        formatted_locator = (by, selector.format(position=position))
+        return self.click_element(formatted_locator)
+
     def get_elements(self, locator):
         """Return all web elements matching the given locator."""
         locator = self.locators.get(locator)
