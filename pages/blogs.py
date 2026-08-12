@@ -14,6 +14,7 @@ class Blogs(BasePage):
         "breadcrumb": (By.CSS_SELECTOR, ".sub-menu-bar-block"),
         "featured post": (By.CSS_SELECTOR, ".feature-block"),
         "search bar": (By.CSS_SELECTOR, ".archive-page .search-bar"),
+        "search input": (By.CSS_SELECTOR, ".archive-page .search-bar input"),
         "topics": (By.XPATH, "(//div[contains(@class, 'archive-page__content')]//*[contains(@class, 'typography')])[2]"),
         "blog card grid": (By.CSS_SELECTOR, ".archive-page__cards"),
         "final cta": (By.CSS_SELECTOR, ".cta-block"),
