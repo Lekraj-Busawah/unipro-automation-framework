@@ -64,3 +64,16 @@ def step_impl(context, element_name, expected_url):
 
     status = context.current_page.get_http_status(expected_url)
     assert status == 200, f"Expected 200 but got {status}"
+
+@then(u'the {element_name} at position "{index}" links to "{expected_url}"')
+def step_impl(context, element_name, index, expected_url):
+    context.current_page.click_element_at_position(element_name, position=index)
+
+    context.current_page.wait_for_url_to_contain(expected_url)
+
+    actual_url = context.current_page.get_url()
+
+    assert expected_url in actual_url, f"Expected URL to contain '{expected_url}' but got '{actual_url}'"
+
+    status = context.current_page.get_http_status(actual_url)
+    assert status == 200, f"Expected 200 but got {status}"
