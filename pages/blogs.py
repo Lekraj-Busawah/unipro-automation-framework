@@ -36,4 +36,8 @@ class Blogs(BasePage):
         "featured post type label": (By.CSS_SELECTOR, ".feature-block .post-icon p"),
         "featured post image": (By.CSS_SELECTOR, ".feature-block__image img"),
 
+        # Topics
+        "topics list": (By.CSS_SELECTOR, ".archive-page__content .typography a.link.no-circle"),
+        "topics list item": (By.XPATH, "(//div[contains(@class, 'archive-page__content')]//a[contains(@class, 'link no-circle')])[{position}]"),
+        "topic link": (By.XPATH, "(//div[contains(@class, 'archive-page__content')]//a[contains(@class, 'link no-circle')])[{position}]"),
     }
