@@ -90,8 +90,12 @@ class BasePage:
         element.click()
         return element
     
-    def enter_text(self, locator, text):
-        """Wait for element, clears it, and types text."""
+    def enter_text(self, locator_name, text):
+        """Looks up a locator by name in self.locators, clears the element and types text."""
+        locator = self.locators.get(locator_name)
+        if not locator:
+            raise ValueError(f"No locator named '{locator_name}' found on {self.__class__.__name__}")
+
         element = self.wait_for_visibility(locator)
         element.clear()
         element.send_keys(text)
