@@ -252,3 +252,11 @@ class BasePage:
         
     def get_section_grid_items(self, locator):
         return self.get_elements(locator)
+
+    def get_blog_card_grid_count(self, element_name):
+        """Returns the number of blog cards in the grid."""
+        blog_card_locator = self.locators.get(element_name)
+        if not blog_card_locator:
+            raise ValueError(f"No locator named '{element_name}' found on this page.")
+        
+        return len(self.get_elements(element_name))
