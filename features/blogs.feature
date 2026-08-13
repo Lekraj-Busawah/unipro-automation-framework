@@ -163,3 +163,12 @@ Feature: Blogs page - Content rendering, search and responsiveness
       | cta eyebrow    | WORK TOGETHER    |
       | cta heading    | conversation     |
       | cta intro text | No pressure      |
+
+  @blogs @finalcta @cta
+  Scenario Outline: Final CTA button navigates to the contact page
+    Then the cta button is visible and contains "<button_text>"
+    And the cta button navigates to "<expected_url>"
+
+    Examples:
+      | button_text  | expected_url                          |
+      | Contact Us   | https://www.unipro.io/contact-us/     |
