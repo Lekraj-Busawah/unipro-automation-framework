@@ -43,4 +43,5 @@ class Blogs(BasePage):
 
         # Blog card grid
         "blog card": (By.CSS_SELECTOR, ".archive-page__cards .card-standard-component"),
+        "blog card read more link": (By.XPATH, "(//div[contains(@class, 'archive-page__cards')]//div[contains(@class, 'card-standard-component card')]//a)[{position}]"),
     }
