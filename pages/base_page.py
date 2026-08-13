@@ -90,8 +90,12 @@ class BasePage:
         element.click()
         return element
     
-    def enter_text(self, locator, text):
-        """Wait for element, clears it, and types text."""
+    def enter_text(self, locator_name, text):
+        """Looks up a locator by name in self.locators, clears the element and types text."""
+        locator = self.locators.get(locator_name)
+        if not locator:
+            raise ValueError(f"No locator named '{locator_name}' found on {self.__class__.__name__}")
+
         element = self.wait_for_visibility(locator)
         element.clear()
         element.send_keys(text)
@@ -207,6 +211,24 @@ class BasePage:
         formatted_locator = (by, selector.format(position=position))
         return self.wait_for_visibility(formatted_locator)
     
+    def click_element_at_position(self, locator_name, position):
+        """
+        Clicks the element for a locator whose XPath/selector
+        contains a '{position}' placeholder
+        """
+        locator = self.locators.get(locator_name)
+        if not locator:
+            raise ValueError(f"No locator named '{locator_name}' found on {self.__class__.__name__}")
+        
+        by, selector = locator
+        formatted_locator = (by, selector.format(position=position))
+        return self.click_element(formatted_locator)
+
+    def get_href_at_position(self, locator_name, position):
+        """Returns the 'href' attribute of the element at the given position"""
+        element = self.get_element_at_position(locator_name, position)
+        return element.get_attribute("href")
+
     def get_elements(self, locator):
         """Return all web elements matching the given locator."""
         locator = self.locators.get(locator)
@@ -235,3 +257,11 @@ class BasePage:
         
     def get_section_grid_items(self, locator):
         return self.get_elements(locator)
+
+    def get_blog_card_grid_count(self, element_name):
+        """Returns the number of blog cards in the grid."""
+        blog_card_locator = self.locators.get(element_name)
+        if not blog_card_locator:
+            raise ValueError(f"No locator named '{element_name}' found on this page.")
+        
+        return len(self.get_elements(element_name))

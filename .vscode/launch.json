@@ -18,6 +18,20 @@
                 "--tags=@wip"
             ],
             "justMyCode": true
+        },
+        {
+            "name": "Behave: Dry Run Current File",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "behave",
+            "console": "integratedTerminal",
+            "args": [
+                "${file}",
+                "--tags=@wip",
+                "--no-skipped",
+                "--dry-run"
+            ],
+            "justMyCode": true
         }
     ]
 }

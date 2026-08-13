@@ -9,7 +9,10 @@ class LogGen:
         # Only add handlers if they haven't been added yet
         if not logger.handlers:
             logger.setLevel(logging.INFO)
-            
+
+            # Stop behave from also printing these logs to the console
+            logger.propagate = False
+
             # File Handler - 'w' mode so each run starts with a clean log
             file_handler = logging.FileHandler("automation.log", mode='w')
             formatter = logging.Formatter('%(asctime)s: %(levelname)s: %(message)s', 
