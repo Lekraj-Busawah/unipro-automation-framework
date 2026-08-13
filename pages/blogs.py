@@ -40,4 +40,7 @@ class Blogs(BasePage):
         "topics list": (By.CSS_SELECTOR, ".archive-page__content .typography a.link.no-circle"),
         "topics list item": (By.XPATH, "(//div[contains(@class, 'archive-page__content')]//a[contains(@class, 'link no-circle')])[{position}]"),
         "topic link": (By.XPATH, "(//div[contains(@class, 'archive-page__content')]//a[contains(@class, 'link no-circle')])[{position}]"),
+
+        # Blog card grid
+        "blog card": (By.CSS_SELECTOR, ".archive-page__cards .card-standard-component"),
     }
