@@ -137,3 +137,14 @@ Feature: Blogs page - Content rendering, search and responsiveness
     Examples:
       | grid_name | minimum_count  |
       | blog card | 10             |
+
+  @blogs @cardgrid @content @smoke
+  Scenario Outline: The 3 most recent blog cards have a working "Read more" link
+    When the "blog card grid" container is displayed
+    Then the blog card at position "<position>" has a working "Read more" link
+
+    Examples:
+      | position | 
+      | 1        |
+      | 2        |
+      | 3        |
