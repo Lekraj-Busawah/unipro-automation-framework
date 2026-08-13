@@ -148,3 +148,18 @@ Feature: Blogs page - Content rendering, search and responsiveness
       | 1        |
       | 2        |
       | 3        |
+
+  # ---------------------------------------------------------------------------
+  # FINAL CTA
+  # ---------------------------------------------------------------------------
+
+  @blogs @finalcta @content @smoke
+  Scenario Outline: Verify final CTA content presence and partial copy
+    When the "final cta" container is displayed
+    Then the <element_name> is visible and contains "<element_contains>"
+
+    Examples:
+      | element_name   | element_contains |
+      | cta eyebrow    | WORK TOGETHER    |
+      | cta heading    | conversation     |
+      | cta intro text | No pressure      |
