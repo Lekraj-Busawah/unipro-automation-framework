@@ -224,6 +224,11 @@ class BasePage:
         formatted_locator = (by, selector.format(position=position))
         return self.click_element(formatted_locator)
 
+    def get_href_at_position(self, locator_name, position):
+        """Returns the 'href' attribute of the element at the given position"""
+        element = self.get_element_at_position(locator_name, position)
+        return element.get_attribute("href")
+
     def get_elements(self, locator):
         """Return all web elements matching the given locator."""
         locator = self.locators.get(locator)
