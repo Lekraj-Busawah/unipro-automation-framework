@@ -69,3 +69,17 @@ Feature: Guides page - Content rendering, search and responsiveness
     Examples:
       | cta_text   | expected_url                      |
       | Contact Us | https://www.unipro.io/contact-us/ |
+
+  # ---------------------------------------------------------------------------
+  # SEARCH
+  # ---------------------------------------------------------------------------
+
+  @guides @search @cta
+  Scenario Outline: Submitting a search term navigates to the filtered results
+    When the "search bar" container is displayed
+    And the user searches the guides for "<search_term>"
+    Then the browser navigates to a URL containing "<expected_query_param>"
+
+    Examples:
+      | search_term | expected_query_param |
+      | low-code    | guide=low-code       |
