@@ -104,3 +104,16 @@ Feature: Guides page - Content rendering, search and responsiveness
       | 7               | 5     | Low-Code                          | /category/low-code                      |
       | 7               | 6     | Quality Assurance                 | /category/quality-assurance             |
       | 7               | 7     | UX & UI Design                    | /category/ux                            |
+
+  # ---------------------------------------------------------------------------
+  # GUIDE CARD GRID
+  # ---------------------------------------------------------------------------
+
+  @guides @cardgrid @grid @smoke
+  Scenario Outline: Guide card grid renders at least the minimum expected number of articles
+    When the "guide card grid" container is displayed
+    Then the <grid_name> has at least "<minimum_count>" cards
+
+    Examples:
+      | grid_name  | minimum_count |
+      | guide card | 2             |
