@@ -60,3 +60,12 @@ Feature: Guides page - Content rendering, search and responsiveness
       | element_name                   | element_contains |
       | breadcrumb home link           | Home             |
       | breadcrumb current page label  | Guides           |
+
+  @guides @breadcrumb @cta
+  Scenario Outline: Sub menu bar contact CTA is present and navigates correctly
+    Then the sub menu bar contact us cta is visible and contains "<cta_text>"
+    And the sub menu bar contact us cta navigates to "<expected_url>"
+
+    Examples:
+      | cta_text   | expected_url                      |
+      | Contact Us | https://www.unipro.io/contact-us/ |
