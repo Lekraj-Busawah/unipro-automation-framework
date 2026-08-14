@@ -117,3 +117,13 @@ Feature: Guides page - Content rendering, search and responsiveness
     Examples:
       | grid_name  | minimum_count |
       | guide card | 2             |
+
+  @guides @cardgrid @content @smoke
+  Scenario Outline: The most recent guide cards have a working "Read more" link
+    When the "guide card grid" container is displayed
+    Then the guide card at position "<position>" has a working "Read more" link
+
+    Examples:
+      | position |
+      | 1        |
+      | 2        |
