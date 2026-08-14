@@ -24,4 +24,8 @@ class Guides(BasePage):
         "hero desktop image": (By.CSS_SELECTOR, ".hero-block__image.hide-mobile"),
         "hero mobile image": (By.CSS_SELECTOR, ".hero-block__image.hide-desktop"),
 
+        # Breadcrumb
+        "breadcrumb home link": (By.CSS_SELECTOR, ".breadcrumbs .item-home a.bread-link"),
+        "breadcrumb current page label": (By.CSS_SELECTOR, ".breadcrumbs .item-current .bread-current"),
+
     }
