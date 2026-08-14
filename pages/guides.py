@@ -29,4 +29,10 @@ class Guides(BasePage):
         "breadcrumb current page label": (By.CSS_SELECTOR, ".breadcrumbs .item-current .bread-current"),
         "sub menu bar contact us cta": (By.CSS_SELECTOR, ".sub-menu-bar-block__links a.primary-button"),
 
+        # Topics
+        "topics list": (By.CSS_SELECTOR, ".archive-page__content .typography a.link.no-circle"),
+        "topics list item": (By.XPATH, "(//div[contains(@class, 'archive-page__content')]//a[contains(@class, 'link no-circle')])[{position}]"),
+        "topic link": (By.XPATH, "(//div[contains(@class, 'archive-page__content')]//a[contains(@class, 'link no-circle')])[{position}]"),
+
+
     }
