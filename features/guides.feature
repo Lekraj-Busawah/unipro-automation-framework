@@ -83,3 +83,24 @@ Feature: Guides page - Content rendering, search and responsiveness
     Examples:
       | search_term | expected_query_param |
       | low-code    | guide=low-code       |
+
+  # ---------------------------------------------------------------------------
+  # TOPICS
+  # ---------------------------------------------------------------------------
+
+  @guides @topics @content @smoke
+  Scenario Outline: Topics list renders all category filter links
+    When the "topics" container is displayed
+    Then the "topics" list has exactly "<expected_count>" items
+    And the "topics" list item at position "<index>" has title "<title>"
+    And the topic link at position "<index>" links to "<expected_url>"
+
+    Examples:
+      | expected_count  | index | title                             | expected_url                            |
+      | 7               | 1     | Data consolidation and migration  | /category/data-consolidation            |
+      | 7               | 2     | Development                       | /category/rapid-application-development |
+      | 7               | 3     | Digital Transformation            | /category/digital-transformation        |
+      | 7               | 4     | Legacy Modernisation              | /category/legacy-modernisation          |
+      | 7               | 5     | Low-Code                          | /category/low-code                      |
+      | 7               | 6     | Quality Assurance                 | /category/quality-assurance             |
+      | 7               | 7     | UX & UI Design                    | /category/ux                            |
