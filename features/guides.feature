@@ -127,3 +127,23 @@ Feature: Guides page - Content rendering, search and responsiveness
       | position |
       | 1        |
       | 2        |
+
+  @guides @finalcta @content @smoke
+  Scenario Outline: Verify final CTA content presence and partial copy
+    When the "final cta" container is displayed
+    Then the <element_name> is visible and contains "<element_contains>"
+
+    Examples:
+      | element_name   | element_contains |
+      | cta eyebrow    | WORK TOGETHER    |
+      | cta heading    | conversation     |
+      | cta intro text | No pressure      |
+
+  @guides @finalcta @cta
+  Scenario Outline: Final CTA button navigates to the contact page
+    Then the cta button is visible and contains "<button_text>"
+    And the cta button navigates to "<expected_url>"
+
+    Examples:
+      | button_text | expected_url                      |
+      | Contact Us  | https://www.unipro.io/contact-us/ |
