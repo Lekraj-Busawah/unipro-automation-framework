@@ -17,5 +17,9 @@ class Guides(BasePage):
         "topics": (By.XPATH, "(//div[contains(@class, 'archive-page__content')]//*[contains(@class, 'typography')])[2]"),
         "guide card grid": (By.CSS_SELECTOR, ".archive-page__cards"),
         "final cta": (By.CSS_SELECTOR, ".cta-block"),
-        
+
+        # Hero section
+        "hero heading": (By.CSS_SELECTOR, ".hero-block .typography h1"),
+        "hero intro text": (By.CSS_SELECTOR, ".hero-block .intro-feature-text p"),
+
     }
