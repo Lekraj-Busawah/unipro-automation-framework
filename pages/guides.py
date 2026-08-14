@@ -38,5 +38,9 @@ class Guides(BasePage):
         "guide card": (By.CSS_SELECTOR, ".archive-page__cards .card-standard-component"),
         "guide card read more link": (By.XPATH, "(//div[contains(@class, 'archive-page__cards')]//div[contains(@class, 'card-standard-component card')]//a)[{position}]"),
 
-
+        # Final CTA
+        "cta eyebrow": (By.CSS_SELECTOR, ".cta-block .eyebrow"),
+        "cta heading": (By.CSS_SELECTOR, ".cta-block h2"),
+        "cta intro text": (By.CSS_SELECTOR, ".cta-block .intro-feature-text p"),
+        "cta button": (By.CSS_SELECTOR, ".cta-block a.button"),
     }
