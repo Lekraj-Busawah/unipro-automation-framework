@@ -34,5 +34,8 @@ class Guides(BasePage):
         "topics list item": (By.XPATH, "(//div[contains(@class, 'archive-page__content')]//a[contains(@class, 'link no-circle')])[{position}]"),
         "topic link": (By.XPATH, "(//div[contains(@class, 'archive-page__content')]//a[contains(@class, 'link no-circle')])[{position}]"),
 
+        # Guide card grid
+        "guide card": (By.CSS_SELECTOR, ".archive-page__cards .card-standard-component"),
+
 
     }
