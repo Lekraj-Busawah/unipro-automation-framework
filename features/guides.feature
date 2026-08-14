@@ -21,3 +21,17 @@ Feature: Guides page - Content rendering, search and responsiveness
       | topics          |
       | guide card grid |
       | final cta       |
+
+  # ---------------------------------------------------------------------------
+  # HERO SECTION
+  # ---------------------------------------------------------------------------
+
+  @guides @hero @content @smoke
+  Scenario Outline: Verify hero content presence and partial copy
+    When the "hero" container is displayed
+    Then the <element_name> is visible and contains "<element_contains>"
+
+    Examples:
+      | element_name    | element_contains |
+      | hero heading    | Guides           |
+      | hero intro text | newest guides    |
