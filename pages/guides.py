@@ -36,6 +36,7 @@ class Guides(BasePage):
 
         # Guide card grid
         "guide card": (By.CSS_SELECTOR, ".archive-page__cards .card-standard-component"),
+        "guide card read more link": (By.XPATH, "(//div[contains(@class, 'archive-page__cards')]//div[contains(@class, 'card-standard-component card')]//a)[{position}]"),
 
 
     }
