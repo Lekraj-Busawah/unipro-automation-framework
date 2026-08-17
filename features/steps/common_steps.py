@@ -1,6 +1,7 @@
 from behave import *
 from pages.blogs import Blogs
 from pages.guides import Guides
+from pages.success_stories import SuccessStories
 from pages.homepage import Homepage
 from pages.who_we_are import WhoWeAre
 from pages.what_we_do import WhatWeDo
@@ -18,6 +19,7 @@ PAGE_REGISTRY = {
     "/who-we-do-it-for/": WhoWeDoItFor,
     "/blogs/": Blogs,
     "/guides/": Guides,
+    "/success-stories/": SuccessStories,
 }
 
 @given(u'the user navigates to "{path}"')
