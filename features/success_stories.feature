@@ -19,3 +19,17 @@ Feature: Success Stories page - Content rendering, search and responsiveness
       | search bar              |
       | success story card grid |
       | final cta               |
+
+  # ---------------------------------------------------------------------------
+  # HERO SECTION
+  # ---------------------------------------------------------------------------
+
+  @successstories @hero @content @smoke
+  Scenario Outline: Verify hero content presence and partial copy
+    When the "hero" container is displayed
+    Then the <element_name> is visible and contains "<element_contains>"
+
+    Examples:
+      | element_name     | element_contains |
+      | hero heading      | Success stories |
+      | hero intro text   | latest thoughts |
