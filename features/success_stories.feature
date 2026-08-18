@@ -90,3 +90,14 @@ Feature: Success Stories page - Content rendering, search and responsiveness
     Examples:
       | grid_name          | minimum_count |
       | success story card | 15            |
+
+  @successstories @cardgrid @content @smoke
+  Scenario Outline: The most recent success story cards have a working "Read more" link
+    When the "success story card grid" container is displayed
+    Then the success story card at position "<position>" has a working "Read more" link
+
+    Examples:
+      | position |
+      | 1        |
+      | 2        |
+      | 3        |
