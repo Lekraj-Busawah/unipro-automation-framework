@@ -73,10 +73,12 @@ Feature: Success Stories page - Content rendering, search and responsiveness
     When the "search bar" container is displayed
     And the user searches the success stories for "<search_term>"
     Then the browser navigates to a URL containing "<expected_query_param>"
+    And the <grid_name> has at least "<minimum_count>" cards
+
 
     Examples:
-      | search_term | expected_query_param   |
-      | payroll     | success_story=payroll  |
+      | search_term | expected_query_param   | grid_name          | minimum_count |
+      | payroll     | success_story=payroll  | success story card | 1             |
 
   # ---------------------------------------------------------------------------
   # SUCCESS STORY CARD GRID
