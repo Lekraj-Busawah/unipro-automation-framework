@@ -27,4 +27,8 @@ class SuccessStories(BasePage):
         "breadcrumb current page label": (By.CSS_SELECTOR, ".breadcrumbs .item-current .bread-current"),
         "sub menu bar contact us cta": (By.CSS_SELECTOR, ".sub-menu-bar-block__links a.primary-button"),
 
+        # Success story card grid
+        "success story card": (By.CSS_SELECTOR, ".archive-page__cards .card-standard-component"),
+        "success story card read more link": (By.XPATH, "(//div[contains(@class, 'archive-page__cards')]//div[contains(@class, 'card-standard-component card')]//a)[{position}]"),
+
     }
