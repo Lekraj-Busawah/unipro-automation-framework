@@ -77,3 +77,16 @@ Feature: Success Stories page - Content rendering, search and responsiveness
     Examples:
       | search_term | expected_query_param   |
       | payroll     | success_story=payroll  |
+
+  # ---------------------------------------------------------------------------
+  # SUCCESS STORY CARD GRID
+  # ---------------------------------------------------------------------------
+
+  @successstories @cardgrid @grid @smoke
+  Scenario Outline: Success story card grid renders at least the minimum expected number of cards
+    When the "success story card grid" container is displayed
+    Then the <grid_name> has at least "<minimum_count>" cards
+
+    Examples:
+      | grid_name          | minimum_count |
+      | success story card | 15            |
