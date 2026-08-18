@@ -67,3 +67,13 @@ Feature: Success Stories page - Content rendering, search and responsiveness
     Examples:
       | cta_text   | expected_url                      |
       | Contact Us | https://www.unipro.io/contact-us/ |
+
+  @successstories @search @cta
+  Scenario Outline: Submitting a search term navigates to the filtered results
+    When the "search bar" container is displayed
+    And the user searches the success stories for "<search_term>"
+    Then the browser navigates to a URL containing "<expected_query_param>"
+
+    Examples:
+      | search_term | expected_query_param   |
+      | payroll     | success_story=payroll  |
