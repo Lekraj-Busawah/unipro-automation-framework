@@ -79,10 +79,11 @@ Feature: Guides page - Content rendering, search and responsiveness
     When the "search bar" container is displayed
     And the user searches the guides for "<search_term>"
     Then the browser navigates to a URL containing "<expected_query_param>"
+    Then the <grid_name> has at least "<minimum_count>" cards
 
     Examples:
-      | search_term | expected_query_param |
-      | low-code    | guide=low-code       |
+      | search_term | expected_query_param | grid_name          | minimum_count |
+      | low-code    | guide=low-code       | guide card grid    | 1             |
 
   # ---------------------------------------------------------------------------
   # TOPICS
