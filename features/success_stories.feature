@@ -44,3 +44,17 @@ Feature: Success Stories page - Content rendering, search and responsiveness
       | page             | device_type | desktop_image      | desktop_visibility | mobile_image      | mobile_visibility |
       | success-stories  | desktop     | hero desktop image | visible            | hero mobile image | hidden            |
       | success-stories  | mobile      | hero desktop image | hidden             | hero mobile image | visible           |
+
+  # ---------------------------------------------------------------------------
+  # BREADCRUMB
+  # ---------------------------------------------------------------------------
+
+  @successstories @breadcrumb @content @smoke
+  Scenario Outline: Verify breadcrumb content presence and partial copy
+    When the "breadcrumb" container is displayed
+    Then the <element_name> is visible and contains "<element_contains>"
+
+    Examples:
+      | element_name                   | element_contains |
+      | breadcrumb home link           | Home              |
+      | breadcrumb current page label  | Success Stories   |
