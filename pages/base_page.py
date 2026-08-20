@@ -258,6 +258,10 @@ class BasePage:
     def get_section_grid_items(self, locator):
         return self.get_elements(locator)
 
+    def get_section_list_items(self, locator):
+        """Returns a list of WebElements for the given section list locator."""
+        return self.get_elements(locator)
+
     def get_blog_card_grid_count(self, element_name):
         """Returns the number of blog cards in the grid."""
         blog_card_locator = self.locators.get(element_name)
