@@ -40,3 +40,18 @@ Feature: Events page - Content rendering and responsiveness
       | page   | device_type | desktop_image      | desktop_visibility | mobile_image      | mobile_visibility |
       | events | desktop     | hero desktop image | visible            | hero mobile image | hidden            |
       | events | mobile      | hero desktop image | hidden             | hero mobile image | visible           |
+
+  # ---------------------------------------------------------------------------
+  # JOIN US / EVENT LISTINGS
+  # ---------------------------------------------------------------------------
+
+  @events @joinus @content @smoke
+  Scenario Outline: Verify "Join us" heading and event category labels
+    When the "join us" container is displayed
+    Then the <element_name> is visible and contains "<element_contains>"
+
+    Examples:
+      | element_name        | element_contains |
+      | join us heading     | Join us          |
+      | exhibiting at label | Exhibiting at    |
+      | attending label     | Attending        |
