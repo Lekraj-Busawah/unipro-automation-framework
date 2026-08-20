@@ -29,3 +29,14 @@ Feature: Events page - Content rendering and responsiveness
     Examples:
       | element_name | element_contains |
       | hero heading | Events           |
+
+  @events @hero @responsive
+  Scenario Outline: Verify hero image visibility by breakpoint
+    When the <page> is viewed on a <device_type> device
+    Then the "<desktop_image>" visibility should be <desktop_visibility>
+    And the "<mobile_image>" visibility should be <mobile_visibility>
+
+    Examples:
+      | page   | device_type | desktop_image      | desktop_visibility | mobile_image      | mobile_visibility |
+      | events | desktop     | hero desktop image | visible            | hero mobile image | hidden            |
+      | events | mobile      | hero desktop image | hidden             | hero mobile image | visible           |
