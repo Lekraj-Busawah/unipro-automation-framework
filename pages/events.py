@@ -15,5 +15,6 @@ class Events(BasePage):
 
        # Hero section
         "hero heading": (By.CSS_SELECTOR, ".hero-block .typography h1"),
-      
+        "hero desktop image": (By.CSS_SELECTOR, ".hero-block__image.hide-mobile"),
+        "hero mobile image": (By.CSS_SELECTOR, ".hero-block__image.hide-desktop"),
     }
