@@ -22,4 +22,6 @@ class Events(BasePage):
         "join us heading": (By.CSS_SELECTOR, ".content-block__typography > .typography h2"),
         "exhibiting at label": (By.CSS_SELECTOR, ".content-block__typography > .columned-text p:nth-of-type(1)"),
         "attending label": (By.CSS_SELECTOR, ".content-block__typography > .columned-text p:nth-of-type(3)"),
+        "exhibiting at list": (By.XPATH, "//div[contains(@class, 'columned-text')]//p[strong[contains(text(), 'Exhibiting')]]//following-sibling::ul[1]//li[not(ul)]"),
+        "attending list": (By.XPATH, "//div[contains(@class, 'columned-text')]//p[strong[contains(text(), 'Attending')]]//following-sibling::ul[1]//li[not(ul)]"),
     }
