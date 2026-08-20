@@ -1,0 +1,16 @@
+from selenium.webdriver.common.by import By
+from .base_page import BasePage
+
+
+class Events(BasePage):
+    # ---------------------------------------------------------------------------
+    # LOCATORS
+    # ---------------------------------------------------------------------------
+
+    locators = {
+
+        # Sections
+        "hero": (By.CSS_SELECTOR, ".hero-block"),
+        "join us": (By.CSS_SELECTOR, ".content-block"),     
+
+    }
