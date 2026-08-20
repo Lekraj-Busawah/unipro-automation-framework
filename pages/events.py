@@ -17,4 +17,9 @@ class Events(BasePage):
         "hero heading": (By.CSS_SELECTOR, ".hero-block .typography h1"),
         "hero desktop image": (By.CSS_SELECTOR, ".hero-block__image.hide-mobile"),
         "hero mobile image": (By.CSS_SELECTOR, ".hero-block__image.hide-desktop"),
+
+        # Join us / event listings
+        "join us heading": (By.CSS_SELECTOR, ".content-block__typography > .typography h2"),
+        "exhibiting at label": (By.CSS_SELECTOR, ".content-block__typography > .columned-text p:nth-of-type(1)"),
+        "attending label": (By.CSS_SELECTOR, ".content-block__typography > .columned-text p:nth-of-type(3)"),
     }
