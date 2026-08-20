@@ -13,4 +13,7 @@ class Events(BasePage):
         "hero": (By.CSS_SELECTOR, ".hero-block"),
         "join us": (By.CSS_SELECTOR, ".content-block"),     
 
+       # Hero section
+        "hero heading": (By.CSS_SELECTOR, ".hero-block .typography h1"),
+      
     }
