@@ -56,7 +56,7 @@ Feature: Events page - Content rendering and responsiveness
       | exhibiting at label | Exhibiting at    |
       | attending label     | Attending        |
 
-  @events @joinus @grid @wip
+  @events @joinus @grid
   Scenario Outline: Event category lists render at least one upcoming event
     When the "join us" container is displayed
     Then the <list_name> has at least "<minimum_count>" items
