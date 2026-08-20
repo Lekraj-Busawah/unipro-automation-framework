@@ -16,3 +16,16 @@ Feature: Events page - Content rendering and responsiveness
       | section_name |
       | hero         |
       | join us      |
+
+  # ---------------------------------------------------------------------------
+  # HERO SECTION
+  # ---------------------------------------------------------------------------
+
+  @events @hero @content @smoke
+  Scenario Outline: Verify hero content presence and partial copy
+    When the "hero" container is displayed
+    Then the <element_name> is visible and contains "<element_contains>"
+
+    Examples:
+      | element_name | element_contains |
+      | hero heading | Events           |
