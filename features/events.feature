@@ -45,7 +45,7 @@ Feature: Events page - Content rendering and responsiveness
   # JOIN US / EVENT LISTINGS
   # ---------------------------------------------------------------------------
 
-  @events @joinus @content @smoke
+  @events @joinus @content @smoke 
   Scenario Outline: Verify "Join us" heading and event category labels
     When the "join us" container is displayed
     Then the <element_name> is visible and contains "<element_contains>"
@@ -55,3 +55,13 @@ Feature: Events page - Content rendering and responsiveness
       | join us heading     | Join us          |
       | exhibiting at label | Exhibiting at    |
       | attending label     | Attending        |
+
+  @events @joinus @grid @wip
+  Scenario Outline: Event category lists render at least one upcoming event
+    When the "join us" container is displayed
+    Then the <list_name> has at least "<minimum_count>" items
+
+    Examples:
+      | list_name           | minimum_count |
+      | exhibiting at list  | 1             |
+      | attending list      | 1             |
