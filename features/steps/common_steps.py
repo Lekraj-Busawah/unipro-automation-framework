@@ -7,6 +7,7 @@ from pages.who_we_are import WhoWeAre
 from pages.what_we_do import WhatWeDo
 from pages.who_we_do_it_for import WhoWeDoItFor
 from pages.events import Events
+from pages.contact_us import ContactUs
 
 # ---------------------------------------------------------------------------
 # SHARED NAVIGATION STEPS
@@ -22,6 +23,7 @@ PAGE_REGISTRY = {
     "/guides/": Guides,
     "/success-stories/": SuccessStories,
     "/events/": Events,
+    "/contact-us/": ContactUs,
 }
 
 @given(u'the user navigates to "{path}"')
