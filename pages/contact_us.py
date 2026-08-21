@@ -21,4 +21,8 @@ class ContactUs(BasePage):
         "hero desktop image": (By.CSS_SELECTOR, ".hero-block__image.hide-mobile"),
         "hero mobile image": (By.CSS_SELECTOR, ".hero-block__image.hide-desktop"),
 
+        # Get in touch
+        "get in touch eyebrow": (By.CSS_SELECTOR, ".general-grid-block__col:nth-of-type(1) .eyebrow"),
+        "get in touch heading": (By.CSS_SELECTOR, ".general-grid-block__col:nth-of-type(1) h2"),
+        "get in touch intro text": (By.CSS_SELECTOR, ".general-grid-block__col:nth-of-type(1) p:not(.eyebrow)"),
     }
