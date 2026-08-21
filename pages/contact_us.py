@@ -18,5 +18,7 @@ class ContactUs(BasePage):
         "hero eyebrow": (By.CSS_SELECTOR, ".hero-block .typography .eyebrow"),
         "hero heading": (By.CSS_SELECTOR, ".hero-block .typography h2"),
         "hero intro text": (By.CSS_SELECTOR, ".hero-block .intro-feature-text p"),
-        
+        "hero desktop image": (By.CSS_SELECTOR, ".hero-block__image.hide-mobile"),
+        "hero mobile image": (By.CSS_SELECTOR, ".hero-block__image.hide-desktop"),
+
     }
