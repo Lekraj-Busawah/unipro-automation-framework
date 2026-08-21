@@ -43,3 +43,18 @@ Feature: Contact Us page - Content rendering and form availability
       | page        | device_type | desktop_image      | desktop_visibility | mobile_image      | mobile_visibility |
       | contact-us  | desktop     | hero desktop image | visible            | hero mobile image | hidden            |
       | contact-us  | mobile      | hero desktop image | hidden             | hero mobile image | visible           |
+
+  # ---------------------------------------------------------------------------
+  # GET IN TOUCH
+  # ---------------------------------------------------------------------------
+
+  @contactus @getintouch @content @smoke
+  Scenario Outline: Verify "Get in touch" content presence and partial copy
+    When the "get in touch" container is displayed
+    Then the <element_name> is visible and contains "<element_contains>"
+
+    Examples:
+      | element_name            | element_contains   |
+      | get in touch eyebrow    | DROP US A NOTE     |
+      | get in touch heading    | Get in touch       |
+      | get in touch intro text | questions, queries |
