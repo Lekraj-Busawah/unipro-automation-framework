@@ -13,4 +13,10 @@ class ContactUs(BasePage):
         "hero": (By.CSS_SELECTOR, ".hero-block"),
         "get in touch": (By.CSS_SELECTOR, ".general-grid-block"),
         "contact form": (By.CSS_SELECTOR, "[data-hs-forms-root='true']"),
+
+        # Hero section
+        "hero eyebrow": (By.CSS_SELECTOR, ".hero-block .typography .eyebrow"),
+        "hero heading": (By.CSS_SELECTOR, ".hero-block .typography h2"),
+        "hero intro text": (By.CSS_SELECTOR, ".hero-block .intro-feature-text p"),
+        
     }
