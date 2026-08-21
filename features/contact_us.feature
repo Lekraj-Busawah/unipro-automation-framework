@@ -17,3 +17,18 @@ Feature: Contact Us page - Content rendering and form availability
       | hero          |
       | get in touch  |
       | contact form  |
+
+  # ---------------------------------------------------------------------------
+  # HERO SECTION
+  # ---------------------------------------------------------------------------
+
+  @contactus @hero @content @smoke
+  Scenario Outline: Verify hero content presence and partial copy
+    When the "hero" container is displayed
+    Then the <element_name> is visible and contains "<element_contains>"
+
+    Examples:
+      | element_name    | element_contains |
+      | hero eyebrow    | CONTACT US       |
+      | hero heading    | how we can help  |
+      | hero intro text | No pressure      |
