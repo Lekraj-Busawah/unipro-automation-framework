@@ -56,7 +56,7 @@ class BasePage:
 
     def wait_for_visibility(self, locator):
         """
-        Waits for an element to be visible in the DOM.
+        Waits for an element to be visible in the DOM and scrolls it into view.
         
         Args:
             locator (tuple): (By.STRATEGY, "selector")
@@ -65,14 +65,15 @@ class BasePage:
             WebElement: The visible element.
         """
         try:
-            return self.wait.until(EC.visibility_of_element_located(locator))
+            element = self.wait.until(EC.visibility_of_element_located(locator))
+            self.driver.execute_script("arguments[0].scrollIntoView({block: 'center', inline: 'center'});", element)
+            return element
         except TimeoutException:
             raise AssertionError(f"Element with locator {locator} was not visible after {self.wait_timeout} seconds")
 
     def scroll_to_element(self, locator):
         """Scrolls the view until the element is visible."""
-        element = self.wait_for_visibility(locator)
-        self.driver.execute_script("arguments[0].scrollIntoView(true);", element)
+        return self.wait_for_visibility(locator)
         
 
     def wait_for_clickable(self, locator):
@@ -251,6 +252,7 @@ class BasePage:
             element = WebDriverWait(self.driver, timeout).until(
                 EC.visibility_of_element_located(locator)
             )
+            self.driver.execute_script("arguments[0].scrollIntoView({block: 'center', inline: 'center'});", element)
             return element.is_displayed()
         except (TimeoutException, NoSuchElementException):
             return False

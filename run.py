@@ -23,7 +23,10 @@ def run_tests():
     # 4. Optional: Ask to serve report immediately
     choice = input("\nGenerate and serve Allure report? (y/n): ")
     if choice.lower() == 'y':
-        subprocess.run("allure serve allure-results", shell=True)
+        try:
+            subprocess.run("allure serve allure-results", shell=True)
+        except KeyboardInterrupt:
+            print("\nAllure server stopped.")
 
 if __name__ == "__main__":
     run_tests()
