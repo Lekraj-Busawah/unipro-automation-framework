@@ -60,11 +60,11 @@ Feature: Homepage marketing content and layout
     Then the <element_name> is visible and contains "<element_contains>"
 
     Examples:
-      | element_name         | element_contains        |
-      | why eyebrow text     | PROBLEM                 |
-      | why heading          | strategic liability     |
-      | why intro text block | bespoke agentic         |
-      | why call to action   | keeping you up at night |
+      | element_name         | element_contains         |
+      | why eyebrow text     | PROBLEM                  |
+      | why heading          | strategic liability      |
+      | why intro text block | agentic AI orchestration |
+      | why call to action   | keeping you up at night  |
 
   @homepage @why-section @navigation
   Scenario Outline: Verify "why" section CTA redirect
