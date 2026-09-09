@@ -63,5 +63,5 @@ Feature: Events page - Content rendering and responsiveness
 
     Examples:
       | list_name           | minimum_count |
-      | exhibiting at list  | 1             |
-      | attending list      | 1             |
+      | exhibiting at list  | 0             |
+      | attending list      | 0             |

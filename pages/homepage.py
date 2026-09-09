@@ -19,9 +19,8 @@ class Homepage(BasePage):
         "CTA": (By.CSS_SELECTOR, ".cta-block.block"),
 
         # Paragraphs
-        1: (By.XPATH, "//p[contains(text(),'We are a custom software studio that replaces outd')]"),
-        2: (By.XPATH, "//p[contains(text(),'With bespoke systems and Agentic AI, we eliminate ')]"),
-        3: (By.XPATH, "//p[normalize-space()='You define the roadmap. We create the advantage.']"),
+        1: (By.XPATH, "//p[contains(text(),'We create the advantage')]"),
+        2: (By.XPATH, "//p[contains(text(),'custom software studio')]"),
     
         # Hero Images
         "desktop hero image": (By.XPATH, "//img[@class='hero-block__image hide-mobile']"),

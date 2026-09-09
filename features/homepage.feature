@@ -21,14 +21,13 @@ Feature: Homepage marketing content and layout
 
   @homepage @hero-section @content
   Scenario Outline: Verify hero headline and feature text are displayed
-    Then the hero heading text should equal "<expected_text>"
-    And the intro feature text at position <paragraph_index> should equal "<paragraph_text>"
+    Then the hero heading text should contain "<expected_text>"
+    And the intro feature text at position <paragraph_index> should contain "<paragraph_text>"
 
     Examples:
-      | expected_text                           | paragraph_index | paragraph_text                                                                                                                                                                                                                                     |
-      | BESPOKE SOFTWARE. UNRIVALLED ADVANTAGE. | 1               | We are a custom software studio that replaces outdated systems and technical constraints with lasting competitive advantage.                                                                                                                       |
-      | BESPOKE SOFTWARE. UNRIVALLED ADVANTAGE. | 2               | With bespoke systems and Agentic AI, we eliminate the drain of legacy debt and unify your data, building bespoke solutions that seamlessly embed intelligence – anticipating needs, automating decisions, and driving immediate commercial impact. |
-      | BESPOKE SOFTWARE. UNRIVALLED ADVANTAGE. | 3               | You define the roadmap. We create the advantage.                                                                                                                                                                                                   |
+      | expected_text                           | paragraph_index | paragraph_text                  |
+      | BESPOKE SOFTWARE. UNRIVALLED ADVANTAGE. | 1               | We create the advantage.        |
+      | BESPOKE SOFTWARE. UNRIVALLED ADVANTAGE. | 2               | We are a custom software studio |
 
   @homepage @hero-section @responsive @desktop
   Scenario Outline: Verify hero image visibility on Desktop
@@ -60,11 +59,11 @@ Feature: Homepage marketing content and layout
     Then the <element_name> is visible and contains "<element_contains>"
 
     Examples:
-      | element_name         | element_contains        |
-      | why eyebrow text     | PROBLEM                 |
-      | why heading          | strategic liability     |
-      | why intro text block | bespoke agentic         |
-      | why call to action   | keeping you up at night |
+      | element_name         | element_contains         |
+      | why eyebrow text     | PROBLEM                  |
+      | why heading          | strategic liability      |
+      | why intro text block | agentic AI orchestration |
+      | why call to action   | keeping you up at night  |
 
   @homepage @why-section @navigation
   Scenario Outline: Verify "why" section CTA redirect

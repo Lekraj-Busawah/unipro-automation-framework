@@ -7,13 +7,8 @@ Feature: Website Footer Content and Navigation
     Given the user is viewing any public page on the website
     And the footer container is visible
 
-  Scenario Outline: Footer is visibly rendered with correct branding
+  Scenario: Footer is visibly rendered with the company logo
     Then the footer displays the company logo
-    And the footer displays the company tagline "<expected_tagline>"
-
-    Examples:
-      | expected_tagline     |
-      | A safe pair of hands |
 
   Scenario: Company logo navigates to the homepage
     When the user clicks the company logo

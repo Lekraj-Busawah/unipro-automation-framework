@@ -13,7 +13,7 @@ class Header(BasePage):
     
     # locators
     header_block = (By.XPATH, "//header[contains(@class, 'header')]")
-    header_logo = (By.XPATH, "//div[@class='header__logo']//img[contains(@src, 'unipro-logo')]")
+    header_logo = (By.XPATH, "//div[@class='header__logo']//img[contains(@src, 'Unipro-Logo')]")
     main_menu = (By.XPATH, "//div[@class='main-menu']")
     who_we_are = link_locator("who-we-are")
     what_we_do = link_locator("what-we-do")

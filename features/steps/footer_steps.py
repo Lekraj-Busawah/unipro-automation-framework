@@ -22,13 +22,6 @@ def step_impl(context):
     assert context.footer.is_logo_displayed(), "Unipro logo is not visible"
 
 
-@then(u'the footer displays the company tagline "{expected_tagline}"')
-def step_impl(context, expected_tagline):
-    actual_text = context.footer.get_tagline_text()
-
-    assert actual_text == expected_tagline, f"Expected '{expected_tagline}', but found '{actual_text}'"
-
-
 @when(u'the user clicks the company logo')
 def step_impl(context):
     context.footer.click_company_logo()

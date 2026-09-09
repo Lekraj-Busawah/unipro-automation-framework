@@ -7,16 +7,13 @@ Feature: Header navigation and branding
   Background:
     Given I open the homepage
 
-
   Scenario: Header exists and logo is visible
     Then the header should be visible
     And the logo in the header should be visible
 
-
   Scenario: Header navigation menu is visible
     When the header is displayed
     Then I should see the primary navigation menu
-
 
   Scenario Outline: Navigation menu items redirect correctly
     Given I open the homepage

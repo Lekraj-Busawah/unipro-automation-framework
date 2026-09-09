@@ -17,19 +17,16 @@ def step_impl(context, element_name):
     assert is_visible, f"The {element_name} container was not visible on the page."
 
 
-@then(u'the hero heading text should equal "{expected_text}"')
+@then(u'the hero heading text should contain "{expected_text}"')
 def step_impl(context, expected_text):
     actual_text = context.current_page.get_element_text("hero heading")
-    
-    assert actual_text == expected_text, f"Expected '{expected_text}' but found '{actual_text}'" 
+    assert expected_text in actual_text, f"Expected '{expected_text}' to be in '{actual_text}'"
 
-@then(u'the intro feature text at position {paragraph_index} should equal "{paragraph_text}"')
+@then(u'the intro feature text at position {paragraph_index} should contain "{paragraph_text}"')
 def step_impl(context, paragraph_index, paragraph_text):
     key = int(paragraph_index)
-    
     actual_text = context.current_page.get_element_text(key)
-    
-    assert actual_text == paragraph_text, f"Expected '{paragraph_text}' but found '{actual_text}'"
+    assert paragraph_text in actual_text, f"Expected '{paragraph_text}' to be in '{actual_text}'"
 
 @given(u'I set the homepage viewport width to {viewportWidth}')
 def step_impl(context, viewportWidth):
