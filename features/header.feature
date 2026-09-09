@@ -25,8 +25,11 @@ Feature: Header navigation and branding
       | who_we_are       | who-we-are       |
       | what_we_do       | what-we-do       |
       | who_we_do_it_for | who-we-do-it-for |
+      | blog             | blog             |
+      | guides           | guides           |
+      | success_stories  | success-stories  |
+      | events           | events           |
       | contact_us       | contact-us       |
-      | careers          | careers          |
 
   @mobile
   Scenario Outline: Header adapts to responsive breakpoints

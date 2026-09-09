@@ -2,6 +2,7 @@ from selenium.webdriver.common.by import By
 from .base_page import BasePage
 from utilities.read_properties import ReadConfig
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.action_chains import ActionChains
 
 class Header(BasePage):
 
@@ -18,9 +19,12 @@ class Header(BasePage):
     who_we_are = link_locator("who-we-are")
     what_we_do = link_locator("what-we-do")
     who_we_do_it_for = link_locator("who-we-do-it-for")
-    insights = (By.XPATH, "//a[contains(text(), 'Insights')]")
+    insights = (By.XPATH, "//div[contains(@class, 'menu-main-menu-container')]//li[contains(@class, 'menu-item-has-children')]/a[normalize-space()='Insights']")
+    blog = (By.XPATH, "//div[contains(@class, 'menu-main-menu-container')]//li[contains(@class, 'menu-item-has-children') and contains(@class, 'menu-item')]//a[normalize-space()='Blogs']")
+    guides = (By.XPATH, "//div[contains(@class, 'menu-main-menu-container')]//li[contains(@class, 'menu-item-has-children') and contains(@class, 'menu-item')]//a[normalize-space()='Guides']")
+    success_stories = (By.XPATH, "//div[contains(@class, 'menu-main-menu-container')]//li[contains(@class, 'menu-item-has-children') and contains(@class, 'menu-item')]//a[normalize-space()='Success Stories']")
+    events = (By.XPATH, "//div[contains(@class, 'menu-main-menu-container')]//li[contains(@class, 'menu-item-has-children') and contains(@class, 'menu-item')]//a[normalize-space()='Events']")
     contact_us = link_locator("contact-us")
-    careers = link_locator("careers")
     hamburger_menu = (By.XPATH, "//*[contains(@class, 'hamburger')]")
 
     # actions
@@ -44,9 +48,11 @@ class Header(BasePage):
             "who_we_are": self.who_we_are,
             "what_we_do": self.what_we_do,
             "who_we_do_it_for": self.who_we_do_it_for,
-            "insights": self.insights,
+            "blog": self.blog,
+            "guides": self.guides,
+            "success_stories": self.success_stories,
+            "events": self.events,
             "contact_us": self.contact_us,
-            "careers": self.careers
         }
 
         # Validate the menu item
@@ -54,7 +60,10 @@ class Header(BasePage):
             raise ValueError(f"Invalid menu item: {menu_item}. "
                             f"Valid options are: {', '.join(menu_mapping.keys())}")
 
-        # Click the element
+        if menu_item in ("blog", "guides", "success_stories", "events"):
+            # sub-items only become interactable once "Insights" is hovered
+            ActionChains(self.driver).move_to_element(self.wait_for_visibility(self.insights)).perform()
+
         self.click_element(menu_mapping[menu_item])
 
     def verify_page_navigation_by_url(self, expected_path):
