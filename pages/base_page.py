@@ -155,11 +155,21 @@ class BasePage:
     
     def wait_for_url_to_be(self, url):
         """Waits until the URL is exactly this string"""
-        return self.wait.until(EC.url_to_be(url))
+        try:
+            return self.wait.until(EC.url_to_be(url))
+        except TimeoutException:
+            raise AssertionError(
+                f"URL did not become '{url}' after {self.wait_timeout} seconds (current URL: {self.driver.current_url})"
+            )
 
     def wait_for_url_to_contain(self, text):
         """Waits until the URL contains this specific text"""
-        return self.wait.until(EC.url_contains(text))
+        try:
+            return self.wait.until(EC.url_contains(text))
+        except TimeoutException:
+            raise AssertionError(
+                f"URL did not contain '{text}' after {self.wait_timeout} seconds (current URL: {self.driver.current_url})"
+            )
     
     def get_windows_id(self, window):
         """Returns window handle(s) based on the request type."""

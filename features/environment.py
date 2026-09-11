@@ -44,6 +44,8 @@ def before_feature(context, feature):
             options.add_argument("--headless")
             context.driver = webdriver.Chrome(options=options)
 
+        context.headless_mode = headless_mode
+
         if headless_mode:
             context.driver.set_window_size(1920, 1080)
         else:
@@ -58,6 +60,13 @@ def before_feature(context, feature):
 
 
 def before_scenario(context, scenario):
+    # Reset viewport to desktop
+    if hasattr(context, 'driver'):
+        if context.headless_mode:
+            context.driver.set_window_size(1920, 1080)
+        else:
+            context.driver.maximize_window()
+
     logger.info(f"---- Started Scenario: {scenario.name} ----")
 
 
