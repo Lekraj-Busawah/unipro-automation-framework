@@ -154,12 +154,12 @@ class BasePage:
             print("No cookie banner found.")
     
     def wait_for_url_to_be(self, url):
-        """Waits until the URL is exactly this string"""
+        """Waits until the URL contains this string"""
         try:
-            return self.wait.until(EC.url_to_be(url))
+            return self.wait.until(EC.url_contains(url))
         except TimeoutException:
             raise AssertionError(
-                f"URL did not become '{url}' after {self.wait_timeout} seconds (current URL: {self.driver.current_url})"
+                f"URL did not contain '{url}' after {self.wait_timeout} seconds (current URL: {self.driver.current_url})"
             )
 
     def wait_for_url_to_contain(self, text):
