@@ -1,6 +1,6 @@
-[![Unipro Automation Suite](https://github.com/Lekraj-Busawah/unipro-automation-framework/actions/workflows/automation.yml/badge.svg)](https://github.com/Lekraj-Busawah/unipro-automation-framework/actions/workflows/automation.yml)
+[![Unipro Automation Suite](https://github.com/Lekraj-Busawah-UP/unipro-automation-framework/actions/workflows/automation.yml/badge.svg)](https://github.com/Lekraj-Busawah-UP/unipro-automation-framework/actions/workflows/automation.yml)
 
-[**View Live Allure Report**](https://lekraj-busawah.github.io/unipro-automation-framework/)
+[**View Live Allure Report**](https://lekraj-busawah-up.github.io/unipro-automation-framework/)
 
 # Unipro BDD Automation Framework
 
