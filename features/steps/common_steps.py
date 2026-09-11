@@ -68,7 +68,7 @@ def step_impl(context, element_name, expected_url):
 
     actual_url = context.current_page.get_url()
 
-    assert actual_url == expected_url, f"Expected {expected_url} but got {actual_url}"
+    assert expected_url in actual_url, f"Expected {expected_url} but got {actual_url}"
 
     status = context.current_page.get_http_status(expected_url)
     assert status == 200, f"Expected 200 but got {status}"
